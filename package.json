@@ -1,0 +1,17 @@
+{
+  "name": "cypress-cci",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx cypress open",
+    "cli": "cypress run",
+    "cypress": "cypress run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^10.11.0"
+  }
+}
