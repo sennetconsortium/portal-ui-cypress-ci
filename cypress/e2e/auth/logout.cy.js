@@ -8,6 +8,6 @@ describe(`${MSGS.name}.Auth`, () => {
 
     it('Logs out after log in', () => {
         cy.contains('Sign-out').click()
-        cy.contains('Logged out of Globus Auth')
+        cy.contains('Log in with your institution credentials')
     })
 })

@@ -10,8 +10,12 @@
 //
 //
 // -- This is a parent command --
-import { PATHS, WAIT } from "../../config/constants";
-import { AUTH } from "../../config/auth";
+import { PATHS, WAIT } from '../../config/constants';
+import { AUTH } from '../../config/auth';
+
+Cypress.Commands.add('clog', (msg) => {
+    cy.log(`/********** ${msg} ************/`)
+})
 
 Cypress.Commands.add('login', (name = 'pitt', options = { }) => {
     cy.session(name, () => {

@@ -34,12 +34,13 @@ Cypress.Commands.add('enterToDataset', (action = 'Created') => {
     cy.get('#lab_dataset_id').clear().type(`${Math.floor(Math.random() * 1000)}-lab`)
     cy.get(SELECTORS.forms.desc).clear().type('Cypress automated description dataset')
     cy.get('#dataset_info').clear().type('Additional Cypress automated description dataset')
-    cy.get('#data_types').select('CODEX')
+    cy.get('#data_types').select(1)
     cy.get('#contains_human_genetic_sequences[value="false"]').check()
     cy.submitAndCheckModalTitle('Dataset', action)
 })
 
 Cypress.Commands.add('searchTable', (keyword) => {
+    cy.wait(WAIT.time)
     cy.get(SELECTORS.search).clear().type(`${keyword}{enter}`)
     cy.wait(WAIT.time)
     cy.get(SELECTORS.table.tr).eq(1).click()
@@ -51,6 +52,7 @@ Cypress.Commands.add('clickAddAncestorButton', (id) => {
 })
 
 Cypress.Commands.add('selectAncestorInDataset', (id) => {
+    cy.clog('Selector Ancestor in Dataset')
     cy.clickAddAncestorButton()
     cy.wait(WAIT.time)
     cy.searchTable(id)

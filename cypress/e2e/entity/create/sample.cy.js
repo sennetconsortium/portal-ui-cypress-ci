@@ -15,7 +15,7 @@ describe(`${MSGS.name}.${MSGS.entity}.${MSGS.create}.Sample`, () => {
             cy.entityCreateForm('Sample', 1)
             cy.get('#group_uuid').select('University of Pittsburgh TMC')
             cy.get('#direct_ancestor_uuid .btn').click()
-            cy.searchTable(DATA.sample.sennetId)
+            cy.searchTable(DATA.source.sennetId)
             cy.enterToSample()
         })
     })

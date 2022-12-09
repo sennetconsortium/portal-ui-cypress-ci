@@ -26,12 +26,13 @@ describe(`${MSGS.name}.${MSGS.search}.Facets.Sample`, () => {
             cy.get('.sui-facet__title--Organ').should('have.text', 'Organ')
         })
 
-        it('Displays Large Intestine on click of + More under Organ (#136)', () => {
+        it('Displays Brain on click of + More under Organ (#136)', () => {
             cy.facets()
             cy.wait(WAIT.time)
             cy.get('.sui-facet-view-more').eq(1).click()
             //DEP: A data specific test, this will fail if no entries are available
-            cy.get('[for="example_facet_undefinedkidney"] .sui-multi-checkbox-facet__input-text').eq(0).should('have.text', 'kidney')
+            cy.wait(WAIT.time)
+            cy.get('[for="example_facet_undefinedBR"] .sui-multi-checkbox-facet__input-text').eq(0).should('have.text', 'Brain')
         })
     })
 
