@@ -11,5 +11,4 @@ describe(`${MSGS.name}.Auth`, () => {
         cy.contains('UUID Not found')
     })
 
-
 })

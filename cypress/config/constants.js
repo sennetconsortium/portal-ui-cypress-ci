@@ -7,9 +7,25 @@ const MSGS = {
     provenance: 'Provenance-UI'
 }
 
+// Selectors that are used more than once throughout the code
+// should be made into constants for reuse here.
+const SEARCH_TABLE = '.table-responsive'
+
 const SELECTORS = {
     search: '.input-group #search',
-    table: '.table-responsive tr'
+    table: {
+        main: SEARCH_TABLE,
+        tr: `${SEARCH_TABLE} tr`,
+        td: `${SEARCH_TABLE} td`,
+    },
+    forms: {
+        sampleCategory: '#sample_category',
+        desc: '#description',
+        protocolUrl: '#protocol_url'
+    },
+    modal: {
+        title: '.modal-title'
+    }
 }
 
 const URLS = {
@@ -24,12 +40,12 @@ const PATHS = {
 
 const DATA = {
     source: {
-        uuid: 'b5874d153e668d110a562c933671fdac',
-        sennetId: 'SNT496.QLMR.225'
+        uuid: 'a55a3f91ea259020be1491e35a55c564',
+        sennetId: 'SNT655.FQSW.448'
     },
     sample: {
-        uuid: '75416aad581009b8f316a3d034a2bda0',
-        sennetId: 'SNT333.VBRT.956'
+        uuid: '7d4d1ab5ad413448511f32d212a0fd78',
+        sennetId: 'SNT587.MDQF.664'
     },
     dataset: {
         uuid: '3ee6a090038e39af0dd536771d44caf8',

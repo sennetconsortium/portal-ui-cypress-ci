@@ -5,9 +5,9 @@ Cypress.Commands.add('basicConstraint', (ancestor = {name: 'Source', index: 1}, 
     cy.clickAddAncestorButton()
     cy.facets(ancestor.name, null)
     cy.wait(WAIT.time)
-    let $tr = ancestor.index !== undefined ? cy.get(SELECTORS.table).eq(ancestor.index) : null
+    let $tr = ancestor.index !== undefined ? cy.get(SELECTORS.table.tr).eq(ancestor.index) : null
     if (ancestor.category) {
-        $tr = cy.get('.table-responsive td').contains(ancestor.category)
+        $tr = cy.get(SELECTORS.table.td).contains(ancestor.category)
     }
     if ( action.click ){
         $tr.click()
@@ -17,15 +17,15 @@ Cypress.Commands.add('basicConstraint', (ancestor = {name: 'Source', index: 1}, 
 })
 
 Cypress.Commands.add('checkSampleCategories', (constraints) => {
-    cy.get('#sample_category option').should('have.length', constraints.length + 1)
+    cy.get(`${SELECTORS.forms.sampleCategory} option`).should('have.length', constraints.length + 1)
     const prefixMsg = 'Sample category dropdown has option: '
     for (let c of constraints) {
         if (typeof c === 'object') {
             cy.log(prefixMsg, c.name)
-            cy.get('#sample_category').select(c.name).should('have.value', c.val)
+            cy.get(SELECTORS.forms.sampleCategory).select(c.name).should('have.value', c.val)
         } else {
             cy.log(prefixMsg, c)
-            cy.get('#sample_category').select(c).should('have.value', c.toLowerCase())
+            cy.get(SELECTORS.forms.sampleCategory).select(c).should('have.value', c.toLowerCase())
         }
     }
 })
