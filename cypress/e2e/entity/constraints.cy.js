@@ -14,20 +14,36 @@ describe(`${MSGS.name}.${MSGS.entity}.Constraints`, () => {
             cy.sampleConstraint({name: 'Sample', category: 'Section'}, {name: 'Sample', index: 1}, ['Suspension'])
         })
 
+        it('A suspension can be the direct descendant of an organ of type blood', () => {
+            const searchTable = ($tr, constraints) => {
+                cy.searchTable('SNT368.RQLR.646')
+                cy.wait(WAIT.time)
+                cy.checkSampleCategories(constraints)
+            }
+            cy.basicConstraint({name: 'Sample', category: 'Organ'}, {name: 'Sample', index: 1}, ['Suspension'], {callback: searchTable})
+        })
+
         context("When a Sample of type Organ is selected as ancestor:", () => {
             it('A tissue block, section, suspension, bodily fluid, organ or organ piece can be a descendant thereof', () => {
-                cy.sampleConstraint({name: 'Sample', category: 'Organ'}, {name: 'Sample', category: 'Block', index: 1}, ['Block', 'Section', 'Suspension', 'Bodily Fluid', 'Organ', 'Organ Piece'])
+                cy.sampleConstraint({name: 'Sample', category: 'Organ'}, {name: 'Sample', index: 1}, ['Block', 'Section', 'Suspension', 'Bodily Fluid', 'Organ', 'Organ Piece'])
             })
         })
 
         context("When a Sample of type Block is selected as ancestor:", () => {
-
             it('A tissue section, block or suspension can be a descendant thereof', () => {
-                cy.sampleConstraint({name: 'Sample', category: 'Block'}, {name: 'Sample', category: 'Section', index: 1}, ['Block', 'Section', 'Suspension'])
+                cy.sampleConstraint({name: 'Sample', category: 'Block'}, {name: 'Sample', index: 1}, ['Block', 'Section', 'Suspension'])
             })
         })
     })
 
+    context("While creating an entity of type Dataset, the following constraints apply:", () => {
+        it('A Dataset can be the descendant of a tissue section', () => {
+            const searchTable = ($tr, constraints) => {
+
+            }
+            cy.basicConstraint({name: 'Sample', category: 'Section'}, {name: 'Dataset', index: 2}, [], {callback: searchTable})
+        })
+    })
 
 
 })

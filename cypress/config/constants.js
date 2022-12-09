@@ -7,6 +7,11 @@ const MSGS = {
     provenance: 'Provenance-UI'
 }
 
+const SELECTORS = {
+    search: '.input-group #search',
+    table: '.table-responsive tr'
+}
+
 const URLS = {
     domain: Cypress.env('domain') || 'https://data.dev.sennetconsortium.org/'
 }
@@ -36,4 +41,4 @@ const WAIT = {
     time: Cypress.env('wait_time') || 1000
 }
 
-export { URLS, PATHS, MSGS, DATA, WAIT }
+export { URLS, PATHS, MSGS, DATA, WAIT, SELECTORS }

@@ -1,4 +1,4 @@
-import { WAIT } from "../../../config/constants";
+import { WAIT, SELECTORS } from "../../../config/constants";
 
 Cypress.Commands.add('entityCreateForm', (entity = 'Source', index = 0) => {
     cy.get('#basic-nav-dropdown').click()
@@ -41,13 +41,20 @@ Cypress.Commands.add('enterToDataset', (action = 'Created') => {
     cy.copyVal()
 })
 
+Cypress.Commands.add('searchTable', (keyword) => {
+    cy.get(SELECTORS.search).clear().type(`${keyword}{enter}`)
+    cy.wait(WAIT.time)
+    cy.get(SELECTORS.table).eq(1).click()
+})
+Cypress.Commands.add('clickAddAncestorButton', (id) => {
+    cy.get('#direct_ancestor_uuid button, #direct_ancestor_uuid_button button').click()
+})
+
 Cypress.Commands.add('selectAncestorInDataset', (id) => {
     // TODO: consolidate id name of this button in code
-    cy.get('#direct_ancestor_uuid_button button').click()
+    cy.clickAddAncestorButton()
     cy.wait(WAIT.time)
-    cy.get('.input-group #search').clear().type(`${id}{enter}`)
-    cy.wait(WAIT.time)
-    cy.get('.table-responsive tr').eq(1).click()
+    cy.searchTable(id)
 })
 
 Cypress.Commands.add('inputValueExists', (selectors, prop = 'val', min = 2) => {
