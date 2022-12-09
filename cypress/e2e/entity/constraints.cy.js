@@ -1,4 +1,4 @@
-import {MSGS, PATHS, DATA, WAIT} from "../../config/constants";
+import {MSGS, PATHS, DATA, WAIT, SELECTORS} from "../../config/constants";
 
 describe(`${MSGS.name}.${MSGS.entity}.Constraints`, () => {
     beforeEach(() => {
@@ -37,11 +37,16 @@ describe(`${MSGS.name}.${MSGS.entity}.Constraints`, () => {
     })
 
     context("While creating an entity of type Dataset, the following constraints apply:", () => {
-        it('A Dataset can be the descendant of a tissue section', () => {
+        it('Tissue section, block and suspension can be ancestors thereof', () => {
             const searchTable = ($tr, constraints) => {
-
+                cy.get('.table-responsive tbody tr').each(($el, i) => {
+                    const text = $el.find('td').eq(3).text()
+                    cy.log('Category', text)
+                    const pos = constraints.indexOf(text)
+                    cy.wrap(pos).should('not.eql', -1)
+                })
             }
-            cy.basicConstraint({name: 'Sample', category: 'Section'}, {name: 'Dataset', index: 2}, [], {callback: searchTable})
+            cy.basicConstraint({name: 'Sample' }, {name: 'Dataset', index: 2}, ['Section', 'Block', 'Suspension'], {callback: searchTable})
         })
     })
 
