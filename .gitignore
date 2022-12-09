@@ -3,7 +3,7 @@ node_modules
 .vscode
 .DS_Store
 cypress/config/local.js
-#cypress/videos
-#cypress/screenshots/
+cypress/videos
+cypress/screenshots/
 dump.js
 cypress.env.json

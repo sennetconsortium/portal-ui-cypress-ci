@@ -1,0 +1,33 @@
+import {MSGS, PATHS, DATA, WAIT} from "../../config/constants";
+
+describe(`${MSGS.name}.${MSGS.entity}.Constraints`, () => {
+    beforeEach(() => {
+        cy.login()
+        cy.visit(PATHS.search)
+    })
+    context("While creating an entity of type Sample, the following constraints apply:", () => {
+        it('An Organ can be a descendant of a Source', () => {
+            cy.sampleConstraint()
+        })
+
+        it('A suspension can be a descendant of a tissue section', () => {
+            cy.sampleConstraint({name: 'Sample', category: 'Section'}, {name: 'Sample', index: 1}, ['Suspension'])
+        })
+
+        context("When a Sample of type Organ is selected as ancestor:", () => {
+            it('A tissue block, section, suspension, bodily fluid, organ or organ piece can be a descendant thereof', () => {
+                cy.sampleConstraint({name: 'Sample', category: 'Organ'}, {name: 'Sample', category: 'Block', index: 1}, ['Block', 'Section', 'Suspension', 'Bodily Fluid', 'Organ', 'Organ Piece'])
+            })
+        })
+
+        context("When a Sample of type Block is selected as ancestor:", () => {
+
+            it('A tissue section, block or suspension can be a descendant thereof', () => {
+                cy.sampleConstraint({name: 'Sample', category: 'Block'}, {name: 'Sample', category: 'Section', index: 1}, ['Block', 'Section', 'Suspension'])
+            })
+        })
+    })
+
+
+
+})
