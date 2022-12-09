@@ -1,4 +1,10 @@
-import {WAIT} from "../config/constants";
+import { WAIT } from "../../../config/constants";
+
+Cypress.Commands.add('entityCreateForm', (entity = 'Source', index = 0) => {
+    cy.get('#basic-nav-dropdown').click()
+    cy.get('.dropdown .dropdown-menu a').eq(index).click()
+    cy.url().should('contain', `/edit/${entity.toLowerCase()}?uuid=create`)
+})
 
 Cypress.Commands.add('enterToSource', (action = 'Created') => {
     cy.get('#lab_source_id').clear().type('Aorta')
@@ -51,4 +57,3 @@ Cypress.Commands.add('inputValueExists', (selectors, prop = 'val', min = 2) => {
         })
     }
 })
-
