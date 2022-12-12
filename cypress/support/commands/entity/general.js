@@ -65,3 +65,10 @@ Cypress.Commands.add('inputValueExists', (selectors, prop = 'val', min = 2) => {
         })
     }
 })
+
+Cypress.Commands.add('bulkUploadStepOne', (index, file) => {
+    cy.get('.nav-item.dropdown').eq(1).click()
+    cy.get('.dropdown .dropdown-menu a').eq(index).click()
+    cy.get('input[type=file]').selectFile(`cypress/fixtures/${file}`, {force: true})
+    cy.get('[type="button"]').contains('Next').click()
+})
