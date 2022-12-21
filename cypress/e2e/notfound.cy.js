@@ -7,8 +7,8 @@ describe(`${MSGS.name}.Auth`, () => {
     })
 
     it('Displays not found alert', () => {
-        cy.visit(`${PATHS.edit}/dataset?uuid=blablabla`)
-        cy.contains('UUID Not found')
+        cy.visit({url: `${PATHS.edit}/dataset?uuid=blablabla`, failOnStatusCode: false })
+        cy.contains('Oops! This page could not be found')
     })
 
 })

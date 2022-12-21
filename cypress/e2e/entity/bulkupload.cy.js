@@ -13,13 +13,15 @@ describe(`${MSGS.name}.${MSGS.entity}.BulkUpload`, () => {
         cy.get('#group_uuid').select('University of Pittsburgh TMC')
         cy.get('[type="button"]').contains('Next').click()
         cy.wait(WAIT.time * 3)
-        cy.get('.MuiAlert-message').contains('Upload successful')
+        cy.get(SELECTORS.modal.title).contains('Sources created')
+        cy.get('.modal-footer .btn').eq(0).contains('Close').click()
+        cy.wait(WAIT.time * 2)
         cy.get('[type="button"]').contains('Finish').click()
     })
 
     it('Fails on upload of bad source file', () => {
         cy.bulkUploadStepOne(0, 'example_source_bad.tsv')
-        cy.get('.MuiStepLabel-labelContainer .MuiStepLabel').should('have.class', 'Mui-error')
+        cy.get('.MuiStepLabel-labelContainer .MuiStepLabel-label').should('have.class', 'Mui-error')
     })
 
 
