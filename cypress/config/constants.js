@@ -44,12 +44,20 @@ const DATA = {
         sennetId: 'SNT655.FQSW.448'
     },
     sample: {
-        uuid: '7d4d1ab5ad413448511f32d212a0fd78',
-        sennetId: 'SNT587.MDQF.664'
+        organ: {
+            uuid: '7d4d1ab5ad413448511f32d212a0fd78',
+            sennetId: 'SNT587.MDQF.664'
+        },
+        block: {
+            uuid: '1610b541dd83722a0fd831d9ffe9367f',
+            sennetId: 'SNT674.RWCF.767'
+        }
     },
     dataset: {
-        uuid: '3ee6a090038e39af0dd536771d44caf8',
-        sennetId: 'SNT546.DPNT.455'
+        bulkRnaSeq: {
+            uuid: '3ee6a090038e39af0dd536771d44caf8',
+            sennetId: 'SNT546.DPNT.455'
+        }
     }
 }
 

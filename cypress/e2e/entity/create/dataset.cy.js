@@ -14,9 +14,9 @@ describe(`${MSGS.name}.${MSGS.entity}.${MSGS.create}.Dataset`, () => {
         it("Displays modal", () => {
             cy.entityCreateForm('Dataset', 2)
             cy.get('#group_uuid').select('Duke University TMC')
-            cy.selectAncestorInDataset(DATA.sample.sennetId)
-            cy.selectAncestorInDataset(DATA.dataset.sennetId)
-            cy.get('.table').contains(DATA.sample.sennetId)
+            cy.selectAncestorInDataset(DATA.sample.block.sennetId)
+            cy.selectAncestorInDataset(DATA.dataset.bulkRnaSeq.sennetId)
+            cy.get('.table').contains(DATA.sample.block.sennetId)
 
             // Delete
             cy.get('.table tr').should('have.length', 3)
