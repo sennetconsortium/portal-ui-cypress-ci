@@ -4,7 +4,7 @@ describe(`${MSGS.name}.${MSGS.provenance}.Page`, () => {
 
     beforeEach(() => {
         cy.login()
-        const url = PATHS.view.replace('{entity}', 'dataset').replace('{id}', DATA.dataset.uuid)
+        const url = PATHS.view.replace('{entity}', 'dataset').replace('{id}', DATA.dataset.bulkRnaSeq.uuid)
         cy.visit(`${url}`)
     })
 

@@ -4,7 +4,7 @@ describe(`${MSGS.name}.${MSGS.entity}.${MSGS.edit}.Dataset`, () => {
 
     beforeEach(() => {
         cy.login()
-        cy.visit(`${PATHS.edit}/dataset?uuid=${DATA.dataset.uuid}`)
+        cy.visit(`${PATHS.edit}/dataset?uuid=${DATA.dataset.bulkRnaSeq.uuid}`)
     })
 
     context("Ensure success of editing Dataset:", () => {

@@ -8,7 +8,7 @@ describe(`${MSGS.name}.Auth`, () => {
     })
 
     it('Cannot edit content when not logged in', () => {
-        cy.visit(`${PATHS.edit}/dataset?uuid=${DATA.dataset.uuid}`)
+        cy.visit(`${PATHS.edit}/dataset?uuid=${DATA.dataset.bulkRnaSeq.uuid}`)
         cy.contains('Access denied')
     })
 

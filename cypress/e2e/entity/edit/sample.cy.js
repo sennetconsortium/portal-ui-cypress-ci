@@ -4,7 +4,7 @@ describe(`${MSGS.name}.${MSGS.entity}.${MSGS.edit}.Sample`, () => {
 
     beforeEach(() => {
         cy.login()
-        cy.visit(`${PATHS.edit}/sample?uuid=${DATA.sample.uuid}`)
+        cy.visit(`${PATHS.edit}/sample?uuid=${DATA.sample.block.uuid}`)
     })
 
     context("Ensure success of editing Source:", () => {
