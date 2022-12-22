@@ -70,5 +70,5 @@ Cypress.Commands.add('bulkUploadStepOne', (index, file) => {
     cy.get('.nav-item.dropdown').eq(1).click()
     cy.get('.dropdown .dropdown-menu a').eq(index).click()
     cy.get('input[type=file]').selectFile(`cypress/fixtures/${file}`, {force: true})
-    cy.get('[type="button"]').contains('Next').click()
+    cy.get(SELECTORS.btns.default).contains('Next').click()
 })

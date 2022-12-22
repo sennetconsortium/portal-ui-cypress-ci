@@ -1,4 +1,4 @@
-import {MSGS, PATHS, DATA} from "../../../config/constants";
+import {MSGS, PATHS, DATA, SELECTORS} from "../../../config/constants";
 
 describe(`${MSGS.name}.${MSGS.entity}.${MSGS.create}.Dataset`, () => {
     beforeEach(() => {
@@ -13,7 +13,7 @@ describe(`${MSGS.name}.${MSGS.entity}.${MSGS.create}.Dataset`, () => {
         })
         it("Displays modal", () => {
             cy.entityCreateForm('Dataset', 2)
-            cy.get('#group_uuid').select('Duke University TMC')
+            cy.get(SELECTORS.forms.groupUuid).select('Duke University TMC')
             cy.selectAncestorInDataset(DATA.sample.block.sennetId)
             cy.selectAncestorInDataset(DATA.dataset.bulkRnaSeq.sennetId)
             cy.get('.table').contains(DATA.sample.block.sennetId)

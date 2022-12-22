@@ -1,4 +1,4 @@
-import {MSGS, PATHS, DATA, WAIT} from "../../../config/constants";
+import {MSGS, PATHS, DATA, WAIT, SELECTORS} from "../../../config/constants";
 
 describe(`${MSGS.name}.${MSGS.entity}.${MSGS.create}.Sample`, () => {
     beforeEach(() => {
@@ -13,7 +13,7 @@ describe(`${MSGS.name}.${MSGS.entity}.${MSGS.create}.Sample`, () => {
         })
         it("Displays modal", () => {
             cy.entityCreateForm('Sample', 1)
-            cy.get('#group_uuid').select('University of Pittsburgh TMC')
+            cy.get(SELECTORS.forms.groupUuid).select('University of Pittsburgh TMC')
             cy.get('#direct_ancestor_uuid .btn').click()
             cy.searchTable(DATA.source.sennetId)
             cy.enterToSample()

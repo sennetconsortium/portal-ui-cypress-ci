@@ -21,10 +21,14 @@ const SELECTORS = {
     forms: {
         sampleCategory: '#sample_category',
         desc: '#description',
-        protocolUrl: '#protocol_url'
+        protocolUrl: '#protocol_url',
+        groupUuid: '#group_uuid'
     },
     modal: {
         title: '.modal-title'
+    },
+    btns: {
+        default: '[type="button"]'
     }
 }
 
