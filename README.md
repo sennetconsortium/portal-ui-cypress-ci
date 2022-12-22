@@ -16,8 +16,8 @@ OR
 - You may need to create one [here](https://www.globusid.org/login).
 - Then set up this new globus ID as an alias in your [globus.org account](https://app.globus.org/).
   - Sign in to your Globus Account
-  - Click Account in the left vertical menu bar
-  - Click Link Another Identity. Follow the onscreen steps 
-  - You should be able to see all your new identity listed in the Identities tab as `yourid@@globusid.org`
+  - Click *Account* in the left vertical menu bar
+  - Click *Link Another Identity*. Follow the onscreen steps 
+  - You should be able to see your new identity listed in the *Identities* tab as `yourid@@globusid.org`
 
 ![Provenance UI](./docs/imgs/MD-globus.png)
