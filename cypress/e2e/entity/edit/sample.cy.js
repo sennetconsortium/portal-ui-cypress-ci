@@ -7,7 +7,7 @@ describe(`${MSGS.name}.${MSGS.entity}.${MSGS.edit}.Sample`, () => {
         cy.visit(`${PATHS.edit}/sample?uuid=${DATA.sample.organ.uuid}`)
     })
 
-    context("Ensure success of editing Source:", () => {
+    context("Ensure success of editing Sample:", () => {
         it('Displays Hipaa', () => {
           cy.checkHipaa()
         })
