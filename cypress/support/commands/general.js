@@ -17,21 +17,27 @@ Cypress.Commands.add('clog', (msg) => {
     cy.log(`/********** ${msg} ************/`)
 })
 
-Cypress.Commands.add('login', (name = 'pitt', options = { }) => {
-    cy.session(name, () => {
-        cy.visit(PATHS.search)
-        cy.contains('Sign-in').click()
-        cy.contains('Log in with your institution credentials').click()
-        cy.origin('auth.globus.org',  { args: { AUTH } }, ({ AUTH }) => {
-            // Use Globus
-            cy.contains('Globus ID to sign in').click()
-        })
+Cypress.Commands.add('loginProcess', (msg) => {
+    cy.contains('Log in with your institution credentials').click()
+    cy.origin('auth.globus.org',  { args: { AUTH } }, ({ AUTH }) => {
+        // Use Globus
+        cy.contains('Globus ID to sign in').click()
+    })
 
-        cy.origin('www.globusid.org', { args: { AUTH } }, ({ AUTH })  => {
-            cy.get('input[name="username"]').type(AUTH.user)
-            cy.get('input[name="password"]').type(AUTH.password)
-            cy.get('button[type="submit"]').click()
-        })
+    cy.origin('www.globusid.org', { args: { AUTH } }, ({ AUTH })  => {
+        cy.get('input[name="username"]').type(AUTH.user)
+        cy.get('input[name="password"]').type(AUTH.password)
+        cy.get('button[type="submit"]').click()
+    })
+})
+
+Cypress.Commands.add('login', (options = { }, name = 'pitt') => {
+    cy.session(name, () => {
+        if (!options.triggered) {
+            cy.visit(PATHS.search)
+            cy.contains('Sign-in').click()
+        }
+        cy.loginProcess()
 
         cy.contains('Sign-out')
     })
