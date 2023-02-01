@@ -44,8 +44,14 @@ const PATHS = {
 
 const DATA = {
     source: {
-        uuid: 'a55a3f91ea259020be1491e35a55c564',
-        sennetId: 'SNT655.FQSW.448'
+        mouse: {
+            uuid: '971a5349c03ba7072edfb30410541e1c',
+            sennetId: 'SNT366.NLQM.672'
+        },
+        human: {
+            uuid: 'a55a3f91ea259020be1491e35a55c564',
+            sennetId: 'SNT655.FQSW.448'
+        }
     },
     sample: {
         organ: {
