@@ -41,7 +41,7 @@ Cypress.Commands.add('facets', (name = 'Sample', legend = 'Sample Category', ind
     cy.wait(WAIT.time)
     cy.get(`#example_facet_undefined${name}`).parent().click()
     if (legend && legend.length) {
-        cy.get('legend').eq(index).should('have.text', legend)
+        cy.get(`.sui-facet__title--${legend.replaceAll(' ', '-')}`).should('have.text', legend)
     }
 })
 

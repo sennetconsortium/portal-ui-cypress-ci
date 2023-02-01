@@ -13,7 +13,7 @@ describe(`${MSGS.name}.${MSGS.provenance}.Page`, () => {
             cy.get('.js-provenance .node').should('have.length.gte', 1)
         })
         it('Expand button loads modal with provenance', () => {
-            cy.get('.provenance--portal-ui .btn--fullView').click()
+            cy.get('#Provenance .js-legend--Expand').eq(0).click()
             cy.get('.modal-full').should('have.length', 1)
             cy.get('.modal-full .modal-title').contains('Provenance')
             cy.get('.modal-full .js-provenance .node').should('have.length.gte', 1)

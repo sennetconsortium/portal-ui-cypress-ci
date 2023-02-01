@@ -5,8 +5,8 @@ describe(`${MSGS.name}.${MSGS.search}.Facets`, () => {
         cy.visit(PATHS.search)
     })
 
-    it("Facets present 'Enity Type', 'Group Name', 'Registered By' ", () => {
-        const facets = ['Entity Type', 'Group Name', 'Registered By']
+    it("Facets present 'Entity Type', 'Data Type', 'Data Provider Group', 'Registered By' ", () => {
+        const facets = ['Entity Type', 'Data Type', 'Data Provider Group', 'Registered By']
         let result = [];
         cy.get('.sui-facet__title').each((el, index) => {
             const text = el.text()
