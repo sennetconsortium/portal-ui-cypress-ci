@@ -10,7 +10,7 @@
 //
 //
 // -- This is a parent command --
-import { PATHS, WAIT } from '../../config/constants';
+import {DATA, PATHS, WAIT} from '../../config/constants';
 import { AUTH } from '../../config/auth';
 
 Cypress.Commands.add('clog', (msg) => {
@@ -65,6 +65,10 @@ Cypress.Commands.add('checkHipaa', () => {
     cy.get('.hipaa-alert').should('have.length', 1)
 })
 
+Cypress.Commands.add('viewEntity', (entity, id) => {
+    const url = PATHS.view.replace('{entity}', entity).replace('{id}', id)
+    cy.visit(`${url}`)
+})
 
 //
 //

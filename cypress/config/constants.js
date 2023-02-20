@@ -64,6 +64,10 @@ const DATA = {
         }
     },
     dataset: {
+        codex: {
+            uuid: '931f7d5bfb8729e738ba3a12e03573c5',
+            sennetId: 'SNT289.BTGG.665'
+        },
         bulkRnaSeq: {
             uuid: '3ee6a090038e39af0dd536771d44caf8',
             sennetId: 'SNT546.DPNT.455'
