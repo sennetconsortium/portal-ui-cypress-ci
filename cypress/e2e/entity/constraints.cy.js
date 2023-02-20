@@ -27,8 +27,8 @@ describe(`${MSGS.name}.${MSGS.entity}.Constraints`, () => {
 
         // DEP: Requires having a sample of type Organ
         context('When a Sample of type Organ is selected as ancestor:', () => {
-            it('A tissue block, section, suspension, bodily fluid, organ or organ piece can be a descendant thereof', () => {
-                cy.sampleConstraint({name: 'Sample', category: 'Organ'}, {name: 'Sample', index: 1}, ['Block', 'Section', 'Suspension', 'Bodily Fluid', 'Organ', 'Organ Piece'])
+            it('A tissue block, section, suspension or organ can be a descendant thereof', () => {
+                cy.sampleConstraint({name: 'Sample', category: 'Organ'}, {name: 'Sample', index: 1}, ['Block', 'Section', 'Suspension', 'Organ'])
             })
         })
 
@@ -44,7 +44,7 @@ describe(`${MSGS.name}.${MSGS.entity}.Constraints`, () => {
         it('Tissue section, block and suspension can be ancestors thereof', () => {
             const searchTable = ($tr, constraints) => {
                 cy.get(`${SELECTORS.table.main} tbody tr`).each(($el, i) => {
-                    const text = $el.find('td').eq(3).text()
+                    const text = $el.find('td').eq(2).text()
                     cy.log('Category', text)
                     const pos = constraints.indexOf(text)
                     cy.wrap(pos).should('not.eql', -1)
