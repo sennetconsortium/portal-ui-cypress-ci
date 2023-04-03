@@ -7,7 +7,7 @@ Cypress.Commands.add('entityCreateForm', (entity = 'Source', index = 0) => {
 })
 
 Cypress.Commands.add('submitAndCheckModalTitle', (entity, action) => {
-    cy.get('.js-btn--submit').contains('Save').click()
+    cy.get('.js-btn--save').contains('Save').click()
     cy.wait(WAIT.time)
     cy.get(SELECTORS.modal.title).contains(`${entity} ${action}`)
     cy.copyVal()
