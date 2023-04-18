@@ -9,6 +9,9 @@ Cypress.Commands.add('basicConstraint', (ancestor = {name: 'Source', index: 1}, 
     if (ancestor.category) {
         $tr = cy.get(SELECTORS.table.td).contains(ancestor.category)
     }
+    if (ancestor.keyword) {
+        $tr = cy.get(SELECTORS.table.td).contains(ancestor.keyword)
+    }
     if ( action.click ){
         $tr.click()
     } else {
@@ -25,7 +28,7 @@ Cypress.Commands.add('checkSampleCategories', (constraints) => {
             cy.get(SELECTORS.forms.sampleCategory).select(c.name).should('have.value', c.val)
         } else {
             cy.log(prefixMsg, c)
-            cy.get(SELECTORS.forms.sampleCategory).select(c).should('have.value', c.toLowerCase()) //c.toLowerCase()
+            cy.get(SELECTORS.forms.sampleCategory).select(c).should('have.value', c) //c.toLowerCase()
         }
     }
 })

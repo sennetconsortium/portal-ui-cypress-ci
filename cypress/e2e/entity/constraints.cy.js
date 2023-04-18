@@ -28,7 +28,7 @@ describe(`${MSGS.name}.${MSGS.entity}.Constraints`, () => {
         // DEP: Requires having a sample of type Organ
         context('When a Sample of type Organ is selected as ancestor:', () => {
             it('A tissue block, section, suspension or organ can be a descendant thereof', () => {
-                cy.sampleConstraint({name: 'Sample', category: 'Organ'}, {name: 'Sample', index: 1}, ['Block'])
+                cy.sampleConstraint({name: 'Sample', keyword: DATA.sample.organBrain.sennetId}, {name: 'Sample', index: 1}, ['Block'])
             })
         })
 

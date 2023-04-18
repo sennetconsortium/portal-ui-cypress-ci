@@ -43,7 +43,8 @@ Cypress.Commands.add('searchTable', (keyword) => {
     cy.wait(WAIT.time)
     cy.get(SELECTORS.search).clear().type(`${keyword}{enter}`)
     cy.wait(WAIT.time)
-    cy.get(SELECTORS.table.tr).eq(1).click()
+    //cy.get(SELECTORS.table.tr).eq(1).click()
+    cy.get(SELECTORS.table.td).contains(keyword).click()
 })
 
 Cypress.Commands.add('clickAddAncestorButton', (id) => {

@@ -54,9 +54,13 @@ const DATA = {
         }
     },
     sample: {
-        organ: {
+        organBrain: {
             uuid: '5d44c0918f5cac196b07feed76dcb4f9',
             sennetId: 'SNT875.ZVHK.264'
+        },
+        organ: {
+            uuid: '3a54ef0a99eb5b39a0df732857bc96af',
+            sennetId: 'SNT967.JSBZ.284'
         },
         block: {
             uuid: '3ffd8a087f0b8e2ffb4c5566dbd6c451',
