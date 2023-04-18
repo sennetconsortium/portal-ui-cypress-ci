@@ -45,32 +45,32 @@ const PATHS = {
 const DATA = {
     source: {
         mouse: {
-            uuid: '971a5349c03ba7072edfb30410541e1c',
-            sennetId: 'SNT366.NLQM.672'
+            uuid: '15f945ec3543385e6d7c191ab8321233',
+            sennetId: 'SNT489.SKVP.536'
         },
         human: {
-            uuid: 'a55a3f91ea259020be1491e35a55c564',
-            sennetId: 'SNT655.FQSW.448'
+            uuid: '34fb81da75a5386d406a7b1835d92bdd',
+            sennetId: 'SNT456.NJFC.364'
         }
     },
     sample: {
         organ: {
-            uuid: '7d4d1ab5ad413448511f32d212a0fd78',
-            sennetId: 'SNT587.MDQF.664'
+            uuid: '5d44c0918f5cac196b07feed76dcb4f9',
+            sennetId: 'SNT875.ZVHK.264'
         },
         block: {
-            uuid: '1610b541dd83722a0fd831d9ffe9367f',
-            sennetId: 'SNT674.RWCF.767'
+            uuid: '3ffd8a087f0b8e2ffb4c5566dbd6c451',
+            sennetId: 'SNT329.XDJS.568'
         }
     },
     dataset: {
         codex: {
-            uuid: '931f7d5bfb8729e738ba3a12e03573c5',
-            sennetId: 'SNT289.BTGG.665'
+            uuid: '6a7be8e95c62c74545a29666111899d9',
+            sennetId: 'SNT554.XLGX.327'
         },
         bulkRnaSeq: {
-            uuid: '3ee6a090038e39af0dd536771d44caf8',
-            sennetId: 'SNT546.DPNT.455'
+            uuid: 'bff9c8c741bda27c391c4e992e81a27a',
+            sennetId: 'SNT459.GVQN.528'
         }
     }
 }

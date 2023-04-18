@@ -25,12 +25,12 @@ Cypress.Commands.add('checkSampleCategories', (constraints) => {
             cy.get(SELECTORS.forms.sampleCategory).select(c.name).should('have.value', c.val)
         } else {
             cy.log(prefixMsg, c)
-            cy.get(SELECTORS.forms.sampleCategory).select(c).should('have.value', c.toLowerCase())
+            cy.get(SELECTORS.forms.sampleCategory).select(c).should('have.value', c.toLowerCase()) //c.toLowerCase()
         }
     }
 })
 
-Cypress.Commands.add('sampleConstraint', (ancestor = {name: 'Source', index: 1}, descendant = {name: 'Sample', index: 1}, constraints = [{name: 'Organ', val: 'organ'}], action) => {
+Cypress.Commands.add('sampleConstraint', (ancestor = {name: 'Source', index: 1}, descendant = {name: 'Sample', index: 1}, constraints = [{name: 'Organ', val: 'Organ'}], action) => {
     cy.basicConstraint(ancestor, descendant, constraints, action)
     cy.wait(WAIT.time)
     cy.checkSampleCategories(constraints)

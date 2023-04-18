@@ -17,7 +17,7 @@ describe(`${MSGS.name}.${MSGS.entity}.Constraints`, () => {
 
         it('A suspension can be the direct descendant of an organ of type blood', () => {
             const searchTable = ($tr, constraints) => {
-                cy.searchTable('SNT368.RQLR.646')
+                cy.searchTable('SNT687.SFVJ.758')
                 cy.wait(WAIT.time)
                 cy.checkSampleCategories(constraints)
             }

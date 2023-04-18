@@ -51,7 +51,7 @@ Cypress.Commands.add('facets', (name = 'Sample', legend = 'Sample Category', ind
     }
 })
 
-Cypress.Commands.add('copyVal', (delimiter = 'SenNet ID:', key = 'cypress.sennet_id', sel = '.modal-body p') => {
+Cypress.Commands.add('copyVal', (delimiter = 'SenNet ID:', key = 'cypress.sennet_id', sel = '.modal-body div') => {
     cy.get(sel).should(($el) => {
         const txt = $el.text()
         //expect(text).to.match(/foo/)

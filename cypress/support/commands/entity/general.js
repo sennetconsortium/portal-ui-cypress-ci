@@ -66,9 +66,9 @@ Cypress.Commands.add('inputValueExists', (selectors, prop = 'val', min = 2) => {
     }
 })
 
-Cypress.Commands.add('bulkUploadStepOne', (index, file) => {
-    cy.get('#nav-dropdown--bulkCreate').click()
-    cy.get('.dropdown .dropdown-menu a').eq(index).click()
+Cypress.Commands.add('bulkDoStepOne', (index, file, actionId= 'Create') => {
+    cy.get(`#nav-dropdown--bulk${actionId}`).click()
+    cy.get(`[aria-labelledby="nav-dropdown--bulk${actionId}"] a`).eq(index).click()
     cy.get('input[type=file]').selectFile(`cypress/fixtures/${file}`, {force: true})
     cy.get(SELECTORS.btns.default).contains('Next').click()
 })
