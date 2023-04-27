@@ -3,7 +3,7 @@ import {MSGS, PATHS, DATA} from "../../config/constants";
 describe(`${MSGS.name}.Auth`, () => {
 
     it('Cannot create content when not logged in', () => {
-        cy.visit(`${PATHS.edit}/dataset?uuid=create`)
+        cy.visit(`${PATHS.edit}/dataset?uuid=register`)
         cy.contains('Access denied')
     })
 

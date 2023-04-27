@@ -3,7 +3,7 @@ import { WAIT, SELECTORS } from "../../../config/constants";
 Cypress.Commands.add('entityCreateForm', (entity = 'Source', index = 0) => {
     cy.get('#nav-dropdown').click()
     cy.get('.dropdown .dropdown-menu a').eq(index).click()
-    cy.url().should('contain', `/edit/${entity.toLowerCase()}?uuid=create`)
+    cy.url().should('contain', `/edit/${entity.toLowerCase()}?uuid=register`)
 })
 
 Cypress.Commands.add('submitAndCheckModalTitle', (entity, action) => {
