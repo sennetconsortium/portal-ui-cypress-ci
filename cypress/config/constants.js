@@ -9,14 +9,18 @@ const MSGS = {
 
 // Selectors that are used more than once throughout the code
 // should be made into constants for reuse here.
-const SEARCH_TABLE = '.table-responsive'
+const SEARCH_TABLE = '.rdt_Table'
+const TABLE_TD = '.rdt_TableCell'
 
 const SELECTORS = {
     search: '.input-group #search',
     table: {
         main: SEARCH_TABLE,
-        tr: `${SEARCH_TABLE} tr`,
-        td: `${SEARCH_TABLE} td`,
+        cell: TABLE_TD,
+        ancestors: '.table--ancestors',
+        th: `.rdt_TableHead .rdt_TableCol .sc-eDWCr`,
+        tr: `${SEARCH_TABLE} .rdt_TableRow`,
+        td: `${SEARCH_TABLE} .rdt_TableRow ${TABLE_TD}`,
     },
     forms: {
         sampleCategory: '#sample_category',

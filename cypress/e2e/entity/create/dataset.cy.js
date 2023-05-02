@@ -16,12 +16,12 @@ describe(`${MSGS.name}.${MSGS.entity}.${MSGS.create}.Dataset`, () => {
             cy.get(SELECTORS.forms.groupUuid).select('Duke University TMC')
             cy.selectAncestorInDataset(DATA.sample.block.sennetId)
             cy.selectAncestorInDataset(DATA.dataset.bulkRnaSeq.sennetId)
-            cy.get('.table').contains(DATA.sample.block.sennetId)
+            cy.get(SELECTORS.table.ancestors).contains(DATA.sample.block.sennetId)
 
             // Delete
-            cy.get('.table tr').should('have.length', 3)
-            cy.get('.table tr [role="button"]').eq(1).click()
-            cy.get('.table tr').should('have.length', 2)
+            cy.get(`${SELECTORS.table.ancestors} tr`).should('have.length', 3)
+            cy.get(`${SELECTORS.table.ancestors} tr [role="button"]`).eq(1).click()
+            cy.get(`${SELECTORS.table.ancestors} tr`).should('have.length', 2)
             cy.enterToDataset()
         })
     })

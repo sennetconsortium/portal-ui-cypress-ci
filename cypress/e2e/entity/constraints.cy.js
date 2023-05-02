@@ -43,8 +43,8 @@ describe(`${MSGS.name}.${MSGS.entity}.Constraints`, () => {
     context('While creating an entity of type Dataset, the following constraints apply:', () => {
         it('Tissue section, block and suspension can be ancestors thereof', () => {
             const searchTable = ($tr, constraints) => {
-                cy.get(`${SELECTORS.table.main} tbody tr`).each(($el, i) => {
-                    const text = $el.find('td').eq(2).text()
+                cy.get(`${SELECTORS.table.tr}`).each(($el, i) => {
+                    const text = $el.find(SELECTORS.table.cell).eq(2).find('div').text()
                     cy.log('Category', text)
                     const pos = constraints.indexOf(text)
                     cy.wrap(pos).should('not.eql', -1)

@@ -1,4 +1,4 @@
-import {MSGS, PATHS, WAIT} from "../../config/constants";
+import {MSGS, PATHS, SELECTORS, WAIT} from "../../config/constants";
 
 describe(`${MSGS.name}.${MSGS.search}.Facets.Sample`, () => {
     beforeEach(() => {
@@ -16,7 +16,7 @@ describe(`${MSGS.name}.${MSGS.search}.Facets.Sample`, () => {
             //DEP: Requires headings to be in following order on the page
             const headers = ['SenNet ID', 'Lab ID', 'Category', 'Organ', 'Group']
             for (let i = 0; i < headers.length; i++) {
-                cy.get('.results-header th').eq(i).should('have.text', headers[i])
+                cy.get(SELECTORS.table.th).eq(i).should('have.text', headers[i])
             }
         })
 
