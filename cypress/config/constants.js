@@ -37,13 +37,18 @@ const SELECTORS = {
 }
 
 const URLS = {
-    domain: Cypress.env('domain') || 'https://data.dev.sennetconsortium.org/'
+    domain: Cypress.env('domain') || 'https://data.dev.sennetconsortium.org/',
+    ubkg: Cypress.env('ubkg_server') || 'https://ontology-api.dev.hubmapconsortium.org/'  //https://ontology.api.hubmapconsortium.org/
 }
 
 const PATHS = {
     search: `${URLS.domain}search`,
     edit: `${URLS.domain}edit`,
-    view: `${URLS.domain}{entity}?uuid={id}`
+    view: `${URLS.domain}{entity}?uuid={id}`,
+    api: {
+        base: `${URLS.domain}api`,
+        ontology: `${URLS.domain}api/ontology/{code}`
+    }
 }
 
 const DATA = {
