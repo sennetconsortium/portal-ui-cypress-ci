@@ -20,7 +20,7 @@ describe(`${MSGS.name}.${MSGS.entity}.${MSGS.create}.Dataset`, () => {
 
             // Delete
             cy.get(`${SELECTORS.table.ancestors} tr`).should('have.length', 3)
-            cy.get(`${SELECTORS.table.ancestors} tr [role="button"]`).eq(1).click()
+            cy.get(`${SELECTORS.table.ancestors} tr [type="button"]`).eq(1).click()
             cy.get(`${SELECTORS.table.ancestors} tr`).should('have.length', 2)
             cy.enterToDataset()
         })

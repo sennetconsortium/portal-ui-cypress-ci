@@ -13,7 +13,7 @@ Cypress.Commands.add('submitAndCheckModalTitle', (entity, action) => {
     cy.copyVal()
 })
 
-Cypress.Commands.add('enterToSource', (action = 'Created') => {
+Cypress.Commands.add('enterToSource', (action = 'Registered') => {
     cy.get('#lab_source_id').clear().type('Aorta')
     cy.get('#source_type').select('Human')
     cy.get(SELECTORS.forms.protocolUrl).clear().type('https://dx.doi.org/10.17504/protocols.io.bf4cjqsw')
@@ -21,7 +21,7 @@ Cypress.Commands.add('enterToSource', (action = 'Created') => {
     cy.submitAndCheckModalTitle('Source', action)
 })
 
-Cypress.Commands.add('enterToSample', (action = 'Created') => {
+Cypress.Commands.add('enterToSample', (action = 'Registered') => {
     cy.get(SELECTORS.forms.sampleCategory).select('Organ')
     cy.get('#organ').select('Brain')
     cy.get(SELECTORS.forms.protocolUrl).clear().type('https://dx.doi.org/10.17504/protocols.io.af4cjqsw')
@@ -30,7 +30,7 @@ Cypress.Commands.add('enterToSample', (action = 'Created') => {
     cy.submitAndCheckModalTitle('Sample', action)
 })
 
-Cypress.Commands.add('enterToDataset', (action = 'Created') => {
+Cypress.Commands.add('enterToDataset', (action = 'Registered') => {
     cy.get('#lab_dataset_id').clear().type(`${Math.floor(Math.random() * 1000)}-lab`)
     cy.get(SELECTORS.forms.desc).clear().type('Cypress automated description dataset')
     cy.get('#dataset_info').clear().type('Additional Cypress automated description dataset')
