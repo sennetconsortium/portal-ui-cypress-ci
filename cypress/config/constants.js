@@ -15,6 +15,8 @@ const TABLE_TD = '.rdt_TableCell'
 const SELECTORS = {
     search: '.input-group #search',
     table: {
+        checkAll: '.sui-check-all input',
+        bodyCheckbox: `.rdt_TableBody input[type="checkbox"]`,
         main: SEARCH_TABLE,
         cell: TABLE_TD,
         ancestors: '.table--ancestors',
@@ -77,6 +79,10 @@ const DATA = {
         }
     },
     dataset: {
+        public: {
+            uuid: '86784f0a82e12c95167c08124fbc949d',
+            sennetId: 'SNT894.TFWT.745'
+        },
         codex: {
             uuid: '6a7be8e95c62c74545a29666111899d9',
             sennetId: 'SNT554.XLGX.327'
