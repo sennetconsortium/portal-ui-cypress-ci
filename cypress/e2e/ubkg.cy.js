@@ -31,7 +31,4 @@ describe(`${MSGS.name}.UBKG`, () => {
             makeRequest(url, u)
         }
     })
-
-
-
 })
