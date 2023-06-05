@@ -3,6 +3,7 @@ import {MSGS, PATHS, DATA} from "../../../config/constants";
 describe(`${MSGS.name}.${MSGS.entity}.${MSGS.edit}.Source`, () => {
     beforeEach(() => {
         cy.login()
+        cy.interceptProtocols()
         cy.visit(`${PATHS.edit}/source?uuid=${DATA.source.human.uuid}`)
     })
 

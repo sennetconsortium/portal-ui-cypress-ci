@@ -3,6 +3,7 @@ import {MSGS, PATHS} from "../../../config/constants";
 describe(`${MSGS.name}.${MSGS.entity}.${MSGS.create}.Source`, () => {
     beforeEach(() => {
         cy.login()
+        cy.interceptProtocols()
         cy.visit(PATHS.search)
     })
 

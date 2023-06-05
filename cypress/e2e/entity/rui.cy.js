@@ -3,6 +3,7 @@ import {MSGS, PATHS, DATA, WAIT, SELECTORS} from "../../config/constants";
 describe(`${MSGS.name}.${MSGS.entity}.RUI`, () => {
     beforeEach(() => {
         cy.login()
+        cy.interceptProtocols()
     })
 
     it('Able to select RUI tool', () => {

@@ -1,4 +1,4 @@
-import {SELECTORS, WAIT} from "../../../config/constants";
+import {DATA, SELECTORS, WAIT} from "../../../config/constants";
 
 Cypress.Commands.add('basicConstraint', (ancestor = {name: 'Source', index: 1}, descendant = {name: 'Sample', index: 1}, constraints = [], action= {click: true}) => {
     cy.entityCreateForm(descendant.name, descendant.index)
@@ -10,6 +10,7 @@ Cypress.Commands.add('basicConstraint', (ancestor = {name: 'Source', index: 1}, 
         $tr = cy.get(SELECTORS.table.td).contains(ancestor.category)
     }
     if (ancestor.keyword) {
+        cy.searchTable(ancestor.keyword)
         $tr = cy.get(SELECTORS.table.td).contains(ancestor.keyword)
     }
     if ( action.click ){

@@ -4,6 +4,7 @@ describe(`${MSGS.name}.${MSGS.entity}.${MSGS.edit}.Sample`, () => {
 
     beforeEach(() => {
         cy.login()
+        cy.interceptProtocols()
         cy.visit(`${PATHS.edit}/sample?uuid=${DATA.sample.organ.uuid}`)
     })
 

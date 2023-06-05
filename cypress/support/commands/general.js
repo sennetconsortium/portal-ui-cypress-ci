@@ -32,6 +32,7 @@ Cypress.Commands.add('loginProcess', (msg) => {
 })
 
 Cypress.Commands.add('login', (options = { }, name = 'pitt') => {
+    cy.viewport('macbook-13')
     cy.session(name, () => {
         if (!options.triggered) {
             cy.visit(PATHS.search)
@@ -69,6 +70,21 @@ Cypress.Commands.add('viewEntity', (entity, id) => {
     const url = PATHS.view.replace('{entity}', entity).replace('{id}', id)
     cy.visit(`${url}`)
 })
+
+Cypress.Commands.add('interceptProtocols', () => {
+    // Intercept the jsonp requests to protocols made that triggers 'unexpected' while running in cypress
+    const randomJsonForNoError = 'http://localhost:3000/api/ontology/C020076'
+    cy.intercept('/view/603-3-amp-604*', (req) => {
+        req.url = randomJsonForNoError
+    })
+    cy.intercept('/10.17504/4*', (req) => {
+        req.url = randomJsonForNoError
+    })
+    cy.intercept('/view/protocol-*', (req) => {
+        req.url = randomJsonForNoError
+    })
+})
+
 
 //
 //

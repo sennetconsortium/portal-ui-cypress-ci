@@ -3,6 +3,7 @@ import {MSGS, PATHS, DATA, WAIT, SELECTORS} from "../../../config/constants";
 describe(`${MSGS.name}.${MSGS.entity}.${MSGS.create}.Sample`, () => {
     beforeEach(() => {
         cy.login()
+        cy.interceptProtocols()
         cy.visit(PATHS.search)
     })
 
