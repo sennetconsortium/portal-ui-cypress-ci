@@ -36,11 +36,11 @@ Cypress.Commands.add('login', (options = { }, name = 'pitt') => {
     cy.session(name, () => {
         if (!options.triggered) {
             cy.visit(PATHS.search)
-            cy.contains('Sign-in').click()
+            cy.contains('Log in').click()
         }
         cy.loginProcess()
 
-        cy.contains('Sign-out')
+        cy.contains('Log out')
     })
 })
 
