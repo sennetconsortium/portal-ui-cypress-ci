@@ -20,7 +20,7 @@ const SELECTORS = {
         main: SEARCH_TABLE,
         cell: TABLE_TD,
         ancestors: '.table--ancestors',
-        th: `.rdt_TableHead .rdt_TableCol .sc-eDWCr`,
+        th: `.rdt_TableHead .rdt_TableCol [role="columnheader"] [data-column-id]`,
         tr: `${SEARCH_TABLE} .rdt_TableRow`,
         td: `${SEARCH_TABLE} .rdt_TableRow ${TABLE_TD}`,
     },
@@ -90,6 +90,10 @@ const DATA = {
         bulkRnaSeq: {
             uuid: 'bff9c8c741bda27c391c4e992e81a27a',
             sennetId: 'SNT459.GVQN.528'
+        },
+        snRNAseq: {
+            uuid: '3cba95bf0f16cb0bd86f054a7f52efea',
+            sennetId: 'SNT877.CBGD.772'
         }
     }
 }
