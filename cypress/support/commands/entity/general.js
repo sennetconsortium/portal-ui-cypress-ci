@@ -2,7 +2,7 @@ import { WAIT, SELECTORS } from "../../../config/constants";
 
 Cypress.Commands.add('entityCreateForm', (entity = 'Source', index = 0) => {
     cy.get('#nav-dropdown').click()
-    cy.get('.dropdown .dropdown-menu a').eq(index).click()
+    cy.get('#submenu-md-Single a').eq(index).click()
     cy.url().should('contain', `/edit/${entity.toLowerCase()}?uuid=register`)
 })
 
@@ -70,8 +70,14 @@ Cypress.Commands.add('inputValueExists', (selectors, prop = 'val', min = 2) => {
 })
 
 Cypress.Commands.add('bulkDoStepOne', (index, file, actionId= 'Create') => {
-    cy.get(`#nav-dropdown--bulk${actionId}`).click()
-    cy.get(`[aria-labelledby="nav-dropdown--bulk${actionId}"] a`).eq(index).click()
+    if (actionId !== 'Create') {
+        cy.get(`#nav-dropdown--bulk${actionId}`).click()
+        cy.get(`[aria-labelledby="nav-dropdown--bulk${actionId}"] a`).eq(index).click()
+    } else {
+        cy.get('#nav-dropdown').click()
+        cy.get('#submenu-md-Bulk a').eq(index).click()
+    }
+
     cy.get('input[type=file]').selectFile(`cypress/fixtures/${file}`, {force: true})
     cy.get(SELECTORS.btns.default).contains('Next').click()
 })

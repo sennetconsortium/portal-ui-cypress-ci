@@ -11,11 +11,11 @@ Cypress.Commands.add('basicConstraint', (ancestor = {name: 'Source', index: 1}, 
     }
     if (ancestor.keyword) {
         cy.searchTable(ancestor.keyword)
-        $tr = cy.get(SELECTORS.table.td).contains(ancestor.keyword)
     }
-    if ( action.click ){
+    if ( action.click && $tr != null ){
         $tr.click()
-    } else {
+    }
+    if (action.callback ) {
         action.callback($tr, constraints)
     }
 })

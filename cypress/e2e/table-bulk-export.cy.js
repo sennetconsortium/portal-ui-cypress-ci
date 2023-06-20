@@ -20,13 +20,10 @@ describe(`${MSGS.name}.Table Bulk Export`, () => {
 
 
     it('Able to copy id to clipboard', () => {
-        cy.get(SELECTORS.search).clear().type(`${DATA.dataset.public.sennetId}{enter}`)
+        cy.get(SELECTORS.search).clear()
+        cy.get(SELECTORS.search).type(`${DATA.dataset.public.sennetId}{enter}`)
         cy.wait(WAIT.time)
         cy.get('.popover-clipboard-pc sup').click()
         cy.assertValueCopiedToClipboard(DATA.dataset.public.sennetId)
     })
-
-
-
-
 })
