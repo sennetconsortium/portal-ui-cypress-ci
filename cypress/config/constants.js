@@ -45,6 +45,7 @@ const URLS = {
 
 const PATHS = {
     search: `${URLS.domain}search`,
+    searchFiles: `${URLS.domain}search/files`,
     edit: `${URLS.domain}edit`,
     view: `${URLS.domain}{entity}?uuid={id}`,
     api: {
