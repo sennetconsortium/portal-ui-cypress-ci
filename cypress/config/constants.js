@@ -85,8 +85,8 @@ const DATA = {
             sennetId: 'SNT894.TFWT.745'
         },
         codex: {
-            uuid: '6a7be8e95c62c74545a29666111899d9',
-            sennetId: 'SNT554.XLGX.327'
+            uuid: '28cb0ddabe8cc51cc2c37124ef5338a9',
+            sennetId: 'SNT652.BMSZ.387'
         },
         bulkRnaSeq: {
             uuid: 'bff9c8c741bda27c391c4e992e81a27a',
@@ -95,6 +95,10 @@ const DATA = {
         snRNAseq: {
             uuid: '3cba95bf0f16cb0bd86f054a7f52efea',
             sennetId: 'SNT877.CBGD.772'
+        },
+        lightsheet: {
+            uuid: '70d65c8edf54654a44c2538659ff2f37',
+            sennetId: 'SNT396.JQRS.283'
         }
     }
 }
