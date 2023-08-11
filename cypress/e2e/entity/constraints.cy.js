@@ -10,9 +10,10 @@ describe(`${MSGS.name}.${MSGS.entity}.Constraints`, () => {
             cy.sampleConstraint()
         })
 
+        // DEP: Requires having a sample of type Section
         it('A suspension can be a descendant of a tissue section', () => {
             // DEP: Requires having a sample of type Section
-            cy.sampleConstraint({name: 'Sample', category: 'Section'}, {name: 'Sample', index: 1}, ['Suspension'])
+            cy.sampleConstraint({name: 'Sample', keyword: DATA.sample.section.sennetId}, {name: 'Sample', index: 1}, ['Suspension'])
         })
 
         it('A suspension can be the direct descendant of an organ of type blood', () => {
@@ -35,7 +36,7 @@ describe(`${MSGS.name}.${MSGS.entity}.Constraints`, () => {
         // DEP: Requires having a sample of type Block
         context('When a Sample of type Block is selected as ancestor:', () => {
             it('A tissue section, block or suspension can be a descendant thereof', () => {
-                cy.sampleConstraint({name: 'Sample', category: 'Block'}, {name: 'Sample', index: 1}, ['Block', 'Section', 'Suspension'])
+                cy.sampleConstraint({name: 'Sample', keyword: DATA.sample.block.sennetId}, {name: 'Sample', index: 1}, ['Block', 'Section', 'Suspension'])
             })
         })
     })

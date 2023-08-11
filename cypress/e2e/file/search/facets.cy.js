@@ -18,10 +18,10 @@ describe(`${MSGS.name}.File.${MSGS.search}.Facets`, () => {
         cy.wrap(result).its('length').should('eq', facets.length)
     })
 
-    it("Headers include: 'Path', 'File Type', 'Sample Type', 'Data Types', 'Size'", () => {
+    it("Headers include: 'Dataset SenNet ID', 'Files', 'Sample Type', 'Data Types', 'Size'", () => {
 
         //DEP: Requires headings to be in following order on the page
-        const headers = ['Path', 'File Type', 'Sample Type', 'Data Types', 'Size']
+        const headers = ['Dataset SenNet ID', 'Files', 'Sample Type', 'Data Types', 'Size']
         for (let i = 0; i < headers.length; i++) {
             cy.get(SELECTORS.table.th).eq(i).should('have.text', headers[i])
         }

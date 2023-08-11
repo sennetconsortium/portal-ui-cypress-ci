@@ -77,6 +77,10 @@ const DATA = {
         block: {
             uuid: '3ffd8a087f0b8e2ffb4c5566dbd6c451',
             sennetId: 'SNT329.XDJS.568'
+        },
+        section: {
+            uuid: '88e99a8332dc4f1ab71c668a0cdcdd63',
+            sennetId: 'SNT576.VGWF.323'
         }
     },
     dataset: {

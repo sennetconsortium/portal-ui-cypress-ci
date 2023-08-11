@@ -10,6 +10,7 @@ describe(`${MSGS.name}.UBKG`, () => {
             let current = JSON.parse(u.data)
             for (let i = 0; i < live.length; i++) {
                 cy.log(`Is ${u.name} index ${i} equal?`, JSON.stringify(live[i]) === JSON.stringify(current[i]))
+                expect(JSON.stringify(live[i])).to.equal(JSON.stringify(current[i]))
             }
             expect(res).to.equal(u.data)
         })
