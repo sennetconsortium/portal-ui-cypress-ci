@@ -93,8 +93,8 @@ const DATA = {
             sennetId: 'SNT652.BMSZ.387'
         },
         bulkRnaSeq: {
-            uuid: 'bff9c8c741bda27c391c4e992e81a27a',
-            sennetId: 'SNT459.GVQN.528'
+            uuid: '0a7fddbb4f3551ef3d5c3a3157279d38',
+            sennetId: 'SNT934.XKLG.885'
         },
         snRNAseq: {
             uuid: '3cba95bf0f16cb0bd86f054a7f52efea',
