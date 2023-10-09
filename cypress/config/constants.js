@@ -85,8 +85,8 @@ const DATA = {
     },
     dataset: {
         public: {
-            uuid: '86784f0a82e12c95167c08124fbc949d',
-            sennetId: 'SNT894.TFWT.745'
+            uuid: '3ffd8a087f0b8e2ffb4c5566dbd6c451',
+            sennetId: 'SNT848.HTTZ.727'
         },
         codex: {
             uuid: '28cb0ddabe8cc51cc2c37124ef5338a9',

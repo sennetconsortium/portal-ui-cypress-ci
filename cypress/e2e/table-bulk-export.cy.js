@@ -23,7 +23,7 @@ describe(`${MSGS.name}.Table Bulk Export`, () => {
         cy.get(SELECTORS.search).clear()
         cy.get(SELECTORS.search).type(`${DATA.dataset.public.sennetId}{enter}`)
         cy.wait(WAIT.time)
-        cy.get('.popover-clipboard-pc sup').click()
+        cy.get('.popover-clipboard-pc sup').eq(0).click()
         cy.assertValueCopiedToClipboard(DATA.dataset.public.sennetId)
     })
 })
