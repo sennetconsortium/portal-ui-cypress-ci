@@ -2,6 +2,7 @@ import {MSGS, PATHS, SELECTORS, WAIT} from "../../../config/constants";
 
 describe(`${MSGS.name}.File.${MSGS.search}.Facets`, () => {
     beforeEach(() => {
+        cy.login()
         cy.visit(PATHS.searchFiles)
     })
 

@@ -7,6 +7,6 @@ describe(`${MSGS.name}.${MSGS.entity}.Vitesse`, () => {
 
     it('Vitesse loads', () => {
         cy.viewEntity('dataset', DATA.dataset.lightsheet.uuid)
-        cy.contains('Powered byVitessce V3.0.0')
+        cy.contains('Powered byVitessce V3.3.0')
     })
 })

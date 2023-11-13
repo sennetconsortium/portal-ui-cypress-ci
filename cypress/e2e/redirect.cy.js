@@ -5,8 +5,7 @@ describe(`${MSGS.name}.Redirect`, () => {
     it('User is sent back to desired page after login', () => {
         cy.interceptProtocols()
         cy.visit(`${PATHS.edit}/sample?uuid=${DATA.sample.block.uuid}`)
-        cy.contains('Access denied')
-        cy.contains('here').click()
+        cy.contains('Unauthorized')
         cy.wait(WAIT.time)
         cy.loginProcess()
         cy.wait(WAIT.time * 2)

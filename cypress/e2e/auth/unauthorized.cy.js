@@ -4,12 +4,12 @@ describe(`${MSGS.name}.Auth`, () => {
 
     it('Cannot create content when not logged in', () => {
         cy.visit(`${PATHS.edit}/dataset?uuid=register`)
-        cy.contains('Access denied')
+        cy.contains('Unauthorized')
     })
 
     it('Cannot edit content when not logged in', () => {
         cy.visit(`${PATHS.edit}/dataset?uuid=${DATA.dataset.bulkRnaSeq.uuid}`)
-        cy.contains('Access denied')
+        cy.contains('Unauthorized')
     })
 
 })
