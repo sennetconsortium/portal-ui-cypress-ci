@@ -13,7 +13,7 @@ describe(`${MSGS.name}.${MSGS.entity}.${MSGS.edit}.Dataset`, () => {
         })
         it("Values populated", () => {
             cy.get('.sui-layout-main-header').contains('SenNet ID: SN')
-            cy.inputValueExists(['#lab_dataset_id', '#data_types'])
+            cy.inputValueExists(['#lab_dataset_id', '#dataset_type'])
         })
         it("Displays modal", () => {
             cy.enterToDataset('Updated')

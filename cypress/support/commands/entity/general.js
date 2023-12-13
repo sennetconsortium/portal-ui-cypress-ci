@@ -36,7 +36,7 @@ Cypress.Commands.add('enterToDataset', (action = 'Registered') => {
     cy.get(SELECTORS.forms.desc).clear().type('Cypress automated description dataset')
     cy.get('#dataset_info').clear().type('Additional Cypress automated description dataset')
     if (action === 'Registered') {
-        cy.get('#data_types').select(1)
+        cy.get('#dataset_type').select(1)
     }
     cy.get('#contains_human_genetic_sequences[value="false"]').check()
     cy.submitAndCheckModalTitle('Dataset', action)
