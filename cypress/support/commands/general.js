@@ -40,7 +40,7 @@ Cypress.Commands.add('login', (options = { }, name = 'pitt') => {
         }
         cy.loginProcess()
 
-        cy.contains('Log out')
+        cy.contains(AUTH.displayname)
     })
 })
 

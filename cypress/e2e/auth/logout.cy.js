@@ -1,4 +1,5 @@
 import {MSGS, PATHS} from "../../config/constants";
+import {AUTH} from "../../config/auth";
 
 describe(`${MSGS.name}.Auth`, () => {
     beforeEach(() => {
@@ -7,9 +8,10 @@ describe(`${MSGS.name}.Auth`, () => {
     })
 
     it('Logs out after log in', () => {
-        cy.contains('Log out').click()
+        cy.contains(AUTH.displayname).click()
+        cy.get('[aria-labelledby="nav-dropdown--user"] a').click()
         cy.visit(PATHS.search)
         // TODO: Investigate why cookie deletion from ingest-api does not work within cypress
-        cy.contains('Invalid Token')
+        cy.contains('Log in')
     })
 })
