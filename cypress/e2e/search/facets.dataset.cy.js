@@ -8,10 +8,10 @@ describe(`${MSGS.name}.${MSGS.search}.Facets.Dataset`, () => {
 
     context('When selecting “Dataset”', () => {
         
-        it("Headers include: 'SenNet ID', 'Lab ID', 'Data Types', 'Organ', 'Status', 'Group'", () => {
+        it("Headers include: 'SenNet ID', 'Lab ID', 'Dataset Type', 'Organ', 'Status', 'Group'", () => {
             cy.facets('Dataset', null)
             //DEP: Requires headings to be in following order on the page
-            const headers = ['SenNet ID', 'Lab ID', 'Data Types', 'Organ', 'Status', 'Group']
+            const headers = ['SenNet ID', 'Lab ID', 'Dataset Type', 'Organ', 'Status', 'Group']
             for (let i = 0; i < headers.length; i++) {
                 cy.get(SELECTORS.table.th).eq(i).should('have.text', headers[i])
             }

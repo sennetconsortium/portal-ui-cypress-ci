@@ -9,6 +9,7 @@ describe(`${MSGS.name}.${MSGS.provenance}.Page`, () => {
 
     context('Ensure provenance loads', () => {
         it('Displays nodes', () => {
+            cy.wait(WAIT.time)
             cy.viewEntity('dataset', DATA.dataset.bulkRnaSeq.uuid)
             cy.get('.js-provenance .node').should('have.length.gte', 1)
         })
