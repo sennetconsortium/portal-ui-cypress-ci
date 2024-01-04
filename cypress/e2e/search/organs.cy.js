@@ -6,17 +6,17 @@ describe(`${MSGS.name}.${MSGS.search}.Organs`, () => {
         cy.visit(PATHS.search)
     })
 
-    it("Can navigate to /organ page from search/entities' ", () => {
+    it("Can navigate to /organs page from search/entities' ", () => {
         cy.get('#nav-dropdown--atlas').click()
         cy.get('[aria-labelledby="nav-dropdown--atlas"] a').eq(2).click()
         cy.wait(WAIT.time)
         let count
-        cy.get('[href="/organ/blood"] .badge').each((el, index) => {
+        cy.get('[href="/organs/blood"] .badge').each((el, index) => {
             count = (el.text().split(' '))[0]
             cy.log('Datasets of Blood: ', count)
 
             // Carry on to view page
-            cy.get('[href="/organ/blood"]').click()
+            cy.get('[href="/organs/blood"]').click()
             cy.wait(WAIT.time)
             cy.contains('UBERON:0000178')
             // Carry on to search page
