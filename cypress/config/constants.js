@@ -35,6 +35,10 @@ const SELECTORS = {
     },
     btns: {
         default: '[type="button"]'
+    },
+    columnToggle: {
+        type: '.sui-columns-toggle [aria-label="Remove Type"]',
+        column: '.rdt_TableHead [data-column-id="5"]'
     }
 }
 
