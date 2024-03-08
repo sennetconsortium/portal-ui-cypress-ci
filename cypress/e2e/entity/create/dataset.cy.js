@@ -15,7 +15,7 @@ describe(`${MSGS.name}.${MSGS.entity}.${MSGS.create}.Dataset`, () => {
             cy.entityCreateForm('Dataset', 2)
             cy.get(SELECTORS.forms.groupUuid).select('Duke University TMC')
             cy.selectAncestorInDataset(DATA.sample.block.sennetId)
-            cy.selectAncestorInDataset(DATA.dataset.bulkRnaSeq.sennetId)
+            cy.selectAncestorInDataset(DATA.dataset.rnaSeq.sennetId)
             cy.get(SELECTORS.table.ancestors).contains(DATA.sample.block.sennetId)
 
             // Delete

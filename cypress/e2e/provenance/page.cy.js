@@ -10,11 +10,11 @@ describe(`${MSGS.name}.${MSGS.provenance}.Page`, () => {
     context('Ensure provenance loads', () => {
         it('Displays nodes', () => {
             cy.wait(WAIT.time)
-            cy.viewEntity('dataset', DATA.dataset.bulkRnaSeq.uuid)
+            cy.viewEntity('dataset', DATA.dataset.rnaSeq.uuid)
             cy.get('.js-provenance .node').should('have.length.gte', 1)
         })
         it('Expand button loads modal with provenance', () => {
-            cy.viewEntity('dataset', DATA.dataset.bulkRnaSeq.uuid)
+            cy.viewEntity('dataset', DATA.dataset.rnaSeq.uuid)
             cy.get('#Provenance .js-legend--Expand').eq(0).click()
             cy.get('.modal-full').should('have.length', 1)
             cy.get('.modal-full .modal-title').contains('Provenance')
@@ -30,8 +30,8 @@ describe(`${MSGS.name}.${MSGS.provenance}.Page`, () => {
 
         it('Clicking node simultaneously selects metadata button', () => {
             cy.viewEntity('dataset', DATA.dataset.codex.uuid)
-            cy.get('#node--6abdf1b6be804e5901edf8add100dc4d').click()
-            cy.get('#Metadata-collapse [data-uuid="6abdf1b6be804e5901edf8add100dc4d"].active').should('have.length.gte', 1)
+            cy.get('#node--5db8dd57b674128258f9fee442d97313').click()
+            cy.get('#Metadata-collapse [data-uuid="5db8dd57b674128258f9fee442d97313"].active').should('have.length.gte', 1)
         })
 
     })

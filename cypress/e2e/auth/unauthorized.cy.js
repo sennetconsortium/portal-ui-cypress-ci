@@ -8,7 +8,7 @@ describe(`${MSGS.name}.Auth`, () => {
     })
 
     it('Cannot edit content when not logged in', () => {
-        cy.visit(`${PATHS.edit}/dataset?uuid=${DATA.dataset.bulkRnaSeq.uuid}`)
+        cy.visit(`${PATHS.edit}/dataset?uuid=${DATA.dataset.rnaSeq.uuid}`)
         cy.contains('Unauthorized')
     })
 
