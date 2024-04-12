@@ -81,4 +81,9 @@ Cypress.Commands.add('bulkDoStepOne', (index, file, actionId= 'Create') => {
 
     cy.get('input[type=file]').selectFile(`cypress/fixtures/${file}`, {force: true})
     cy.get(SELECTORS.btns.default).contains('Next').click()
+    if (index === 0) {
+        cy.get('#group_uuid').select('CODCC Testing Group')
+        cy.get(SELECTORS.btns.default).contains('Next').click()
+    }
+
 })

@@ -52,6 +52,9 @@ const PATHS = {
     searchFiles: `${URLS.domain}search/files`,
     edit: `${URLS.domain}edit`,
     view: `${URLS.domain}{entity}?uuid={id}`,
+    jobs: {
+      admin: `${URLS.domain}admin/jobs`,
+    },
     api: {
         base: `${URLS.domain}api`,
         ontology: `${URLS.domain}api/ontology/{code}`
