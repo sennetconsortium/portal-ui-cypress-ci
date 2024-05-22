@@ -71,9 +71,16 @@ Cypress.Commands.add('inputValueExists', (selectors, prop = 'val', min = 2) => {
 })
 
 Cypress.Commands.add('bulkDoStepOne', (index, file, actionId= 'Create') => {
+    const isMetadata = actionId === 'Metadata'
     if (actionId !== 'Create') {
-        cy.get(`#nav-dropdown--bulk${actionId}`).click()
-        cy.get(`[aria-labelledby="nav-dropdown--bulk${actionId}"] a`).eq(index).click()
+        if (isMetadata) {
+            cy.get('[href="/edit/bulk/metadata"]').click()
+
+        } else {
+            cy.get(`#nav-dropdown--bulk${actionId}`).click()
+            cy.get(`[aria-labelledby="nav-dropdown--bulk${actionId}"] a`).eq(index).click()
+        }
+
     } else {
         cy.get('#nav-dropdown').click()
         cy.get('#submenu-md-Bulk a').eq(index).click()
@@ -83,6 +90,10 @@ Cypress.Commands.add('bulkDoStepOne', (index, file, actionId= 'Create') => {
     cy.get(SELECTORS.btns.default).contains('Next').click()
     if (index === 0) {
         cy.get('#group_uuid').select('CODCC Testing Group')
+        cy.get(SELECTORS.btns.default).contains('Next').click()
+    }
+    if (isMetadata) {
+        cy.get('#uploadType').select('Mouse')
         cy.get(SELECTORS.btns.default).contains('Next').click()
     }
 
