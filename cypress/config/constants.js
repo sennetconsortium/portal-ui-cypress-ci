@@ -78,8 +78,8 @@ const DATA = {
             sennetId: 'SNT967.JSBZ.284'
         },
         organ: {
-            uuid: '8821e43a3efd27248176e184f1e6f480',
-            sennetId: 'SNT825.DPRZ.995'
+            uuid: '85f3db3fa32ae1486bf7de5669df8618',
+            sennetId: 'SNT482.MZHD.399'
         },
         block: {
             uuid: '3ffd8a087f0b8e2ffb4c5566dbd6c451',

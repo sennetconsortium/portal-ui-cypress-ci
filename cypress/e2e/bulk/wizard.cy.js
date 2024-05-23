@@ -9,10 +9,10 @@ describe(`${MSGS.name}.BulkWizard`, () => {
     context("Ensure bulk wizard", () => {
         it('Able to bulk register source', () => {
             cy.bulkDoStepOne(0, 'example_source_1_line.tsv')
-            cy.wait(WAIT.time * 7)
+            cy.wait(WAIT.time * 3)
             cy.get('.MuiAlert-message').contains('Validation successful please continue onto the next step')
             cy.get(SELECTORS.btns.default).contains('Next').click()
-            cy.wait(WAIT.time * 7)
+            cy.wait(WAIT.time * 3)
             cy.get(SELECTORS.modal.title).contains('Sources registered')
             cy.get('.modal-footer .btn').eq(0).contains('Close').click()
             cy.wait(WAIT.time * 2)
