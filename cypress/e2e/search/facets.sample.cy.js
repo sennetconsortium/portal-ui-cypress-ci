@@ -26,6 +26,16 @@ describe(`${MSGS.name}.${MSGS.search}.Facets.Sample`, () => {
             cy.get('.sui-facet__title--Organ').should('have.text', 'Organ')
         })
 
+        it('Organ facet is hierarchical', () => {
+            cy.facets()
+            cy.wait(WAIT.time)
+            cy.get('.sui-facet__title--Organ').click()
+            cy.wait(WAIT.time)
+            cy.get('#sui-facet--Lung').parent().as('lungFacet')
+            cy.get('@lungFacet').find('#sui-facet--Lung').click()
+            cy.get('@lungFacet').find('.collapsableFacets_facetsHover__LyFlN').should('exist')
+        })
+
         it('Displays Brain on click of + More under Organ (#136)', () => {
             cy.facets()
             cy.wait(WAIT.time)
