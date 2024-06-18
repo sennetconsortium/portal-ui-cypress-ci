@@ -11,7 +11,7 @@ describe(`${MSGS.name}.BulkWizard`, () => {
             cy.bulkDoStepOne(0, 'example_source_1_line.tsv')
             cy.wait(WAIT.time * 3)
             cy.get('.MuiAlert-message').contains('Validation successful please continue onto the next step')
-            cy.get(SELECTORS.btns.default).contains('Next').click()
+            cy.get(SELECTORS.btns.default).contains('Register').click()
             cy.wait(WAIT.time * 3)
             cy.get(SELECTORS.modal.title).contains('Sources registered')
             cy.get('.modal-footer .btn').eq(0).contains('Close').click()

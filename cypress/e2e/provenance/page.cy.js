@@ -30,8 +30,8 @@ describe(`${MSGS.name}.${MSGS.provenance}.Page`, () => {
 
         it('Clicking node simultaneously selects metadata button', () => {
             cy.viewEntity('dataset', DATA.dataset.codex.uuid)
-            cy.get('#node--5db8dd57b674128258f9fee442d97313').click()
-            cy.get('#Metadata-collapse [data-uuid="5db8dd57b674128258f9fee442d97313"].active').should('have.length.gte', 1)
+            cy.get('#node--3c4fc147a08429f58856779fcde96f42').click()
+            cy.get('#Metadata-collapse [data-uuid="3c4fc147a08429f58856779fcde96f42"].active').should('have.length.gte', 1)
         })
 
     })
