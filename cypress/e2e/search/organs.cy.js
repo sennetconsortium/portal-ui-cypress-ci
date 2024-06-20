@@ -7,8 +7,11 @@ describe(`${MSGS.name}.${MSGS.search}.Organs`, () => {
     })
 
     it("Can navigate to /organs page from search/entities' ", () => {
-        cy.get('#nav-dropdown--atlas').click()
-        cy.get('[aria-labelledby="nav-dropdown--atlas"] a').eq(2).click()
+
+        cy.get('.navbar-nav:not(.me-auto) .nav-item').eq(0).as('toolsMenu')
+        cy.get('@toolsMenu').find('#nav-dropdown--atlas').click()
+        cy.wait(WAIT.time)
+        cy.get('@toolsMenu').find('[aria-labelledby="nav-dropdown--atlas"] a').eq(2).click()
         cy.wait(WAIT.time)
         let count
         cy.get('[href="/organs/blood"] .badge').each((el, index) => {
