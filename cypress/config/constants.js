@@ -112,8 +112,8 @@ const DATA = {
             sennetId: 'SNT396.JQRS.283'
         },
         histology: {
-            uuid: '132f5759e9f9c39bc08854f4da1bc5b0',
-            sennetId: 'SNT579.FGGT.395'
+            uuid: 'cf8eef9ab9ad49c4481db113893dff9c',
+            sennetId: 'SNT538.CRXN.954'
         },
         visium: {
             uuid: 'e6e88238b28bcbd32faf204d5e07867b',
