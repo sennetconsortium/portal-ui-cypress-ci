@@ -1,9 +1,9 @@
 import { WAIT, SELECTORS } from "../../../config/constants";
 
 Cypress.Commands.add('entityCreateForm', (entity = 'Source', index = 0) => {
-    cy.get('#nav-dropdown').click()
-    cy.wait(WAIT.time)
-    cy.get('#submenu-md-Single a').eq(index).click()
+    cy.get('.me-auto.navbar-nav').as('mainMenu')
+    cy.get('@mainMenu').find('#nav-dropdown').click()
+    cy.get('@mainMenu').find('#submenu-md-Single a').eq(index).click()
     cy.url().should('contain', `/edit/${entity.toLowerCase()}?uuid=register`)
 })
 
