@@ -8,3 +8,4 @@ cypress/screenshots/
 dump.js
 cypress.env.json
 package-lock.json
+logs

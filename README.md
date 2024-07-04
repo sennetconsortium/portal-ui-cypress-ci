@@ -21,3 +21,8 @@ OR
   - You should be able to see your new identity listed in the *Identities* tab as `yourid@@globusid.org`
 
 ![Provenance UI](./docs/imgs/MD-globus.png)
+
+```agsl
+docker build -t portal_ui_ci .
+docker run -p 8765:8765 -v $PWD:/portal_ui_ci portal_ui_ci
+```
