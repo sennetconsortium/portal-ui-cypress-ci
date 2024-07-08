@@ -1,28 +1,20 @@
-#!/usr/bin/env python
-
 import asyncio
 import json
-import sys
-
+import websockets
 from websockets.server import serve
+from lib import write_to_file
 
-from observer import CypressReportsObserver
-from watchdog.observers import Observer
 import subprocess
 import threading
+import base64
+import datetime
 
-observer = None
-
-
-def get_report(path):
-    f = open(path)
-    data = json.load(f)
-    f.close()
-    return data
+USERS = set()
 
 
 def run_cypress():
     subprocess.run(["npm", "run", "cli"])
+    return
 
 
 def is_job_thread_running(job_name):
@@ -41,58 +33,48 @@ def handle_cypress_thread():
     job_name = 'run_cypress'
     thread_details = is_job_thread_running(job_name)
     th = thread_details.get('thread')
-    # if th is not None:
-    #     sys.exit()
+    running = threading.Event()
+    running.set()
+    if th is not None:
+        running.clear()
 
-    threading.Thread(target=run_cypress, daemon=True, name=job_name).start()
+    curr = threading.Thread(target=run_cypress, daemon=True, name=job_name)
+    curr.start()
+    curr.join()
 
 
 async def echo(websocket):
-    global observer
+    global USERS
+
+    USERS.add(websocket)
 
     async for message in websocket:
-        result = None
+
         try:
-            handle_cypress_thread()
-
-            async def observer_callback(data):
-                try:
-                    data['report'] = get_report(data.get('path'))
-                    await websocket.send(json.dumps(data))
-                    if 'complete.json' in data.get('path'):
-                        observer.stop()
-
-                except Exception as e2:
-                    print('Exception', e2)
-                    if observer is not None:
-                        observer.stop()
-
-            event_handler = CypressReportsObserver()
-            event_handler.websocket = websocket
-            event_handler.callback = observer_callback
-            if observer is None:
-                observer = Observer()
-                observer.schedule(event_handler, path='/portal_ui_ci/logs/', recursive=True)
-                observer.start()
-
             await websocket.send(json.dumps({
                 'message': f"Received message. {message}"
             }))
-            if observer is not None:
-                observer.join()
+
+            try:
+                if 'logger.' in message:
+                    r = base64.b64decode(message[7:])
+                    report = r.decode('utf-8')
+                    websockets.broadcast(USERS, json.dumps({
+                        'report': json.loads(report)
+                    }))
+                else:
+                    handle_cypress_thread()
+            except Exception as e2:
+                websockets.broadcast(USERS, str(e2))
+
         except Exception as e:
-            result = {
-                'error': str(e)
-            }
-            if observer is not None:
-                observer.stop()
-        if result is not None:
-            await websocket.send(json.dumps(result))
+            write_to_file('error.txt', f"{datetime.datetime.now()}: {str(e)}")
 
 
 async def main():
     async with serve(echo, "0.0.0.0", 8765):
-        print('Serving cypress socket ...')
+        write_to_file('log.txt', f"{datetime.datetime.now()}: SERVING CYPRESS SOCKET on port 8765 ... ")
         await asyncio.Future()  # run forever
+
 
 asyncio.run(main())

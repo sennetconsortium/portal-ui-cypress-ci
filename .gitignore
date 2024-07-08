@@ -9,3 +9,7 @@ dump.js
 cypress.env.json
 package-lock.json
 logs
+ci/logs/*
+ci/.venv
+.venv
+ci/__pycache__

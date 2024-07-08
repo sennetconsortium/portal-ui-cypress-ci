@@ -1,22 +1,24 @@
-FROM node:20.5.0
+FROM ubuntu:latest
 
 WORKDIR /portal_ui_ci
 
 COPY . .
 
+# Install required packages for Cypress
+RUN apt-get update && apt-get install -y libgtk2.0-0t64 libgtk-3-0t64 libgbm-dev libnotify-dev libnss3 libxss1 libasound2t64 libxtst6 xauth xvfb
+
+# Install the usual
 RUN apt-get update && apt-get install -y \
-    vim
+     python3 \
+     python3-pip \
+     python3.12-venv \
+     vim \
+     nodejs \
+     npm
 
-RUN apt-get install -y libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libnss3 libxss1 libasound2 libxtst6 xauth xvfb
-
-# Install Python
-RUN apt-get update && \
-    apt-get install -y python3-full python3-pip python3.11-venv
-
+# Set up a new python envioronment
 RUN python3 -m venv .venv
 RUN . .venv/bin/activate
-# RUN pip install --upgrade pip -r ci/requirements.txt
-RUN apt install -y python3-watchdog
 RUN apt install -y python3-websockets
 
 RUN npm install .

@@ -1,6 +1,9 @@
 const { defineConfig } = require("cypress");
 const fs = require('fs')
 
+const { exec } = require('child_process');
+const pythonLogger = '/portal_ui_ci/.venv/bin/python ci/cypress_reporter.py'
+
 module.exports = defineConfig({
   chromeWebSecurity: false,
   e2e: {
@@ -11,13 +14,27 @@ module.exports = defineConfig({
       // implement node event listeners here
 
       on('after:spec', (spec, results) => {
-        console.log('Spec', results.totalTests)
-        fs.writeFileSync('./logs/tests.json', JSON.stringify(results))
+
+        exec(`${pythonLogger} ${btoa(JSON.stringify(results))}`, (err, stdout, stderr) => {
+          if (err) {
+            console.error(`error: ${err.message}`);
+            return;
+          }
+
+          if (stderr) {
+            console.error(`stderr: ${stderr}`);
+            return;
+          }
+
+          console.log(`stdout:\n${stdout}`);
+        });
+
       })
 
       on('after:run', (results) => {
-        console.log('After run', results.totalTests)
-        fs.writeFileSync('./logs/complete.json', JSON.stringify(results));
+        exec(`${pythonLogger} ${btoa(JSON.stringify({'complete': true}))}`, (err, stdout, stderr) => {
+        });
+        fs.writeFileSync('./ci/logs/last-run-tests-results.json', JSON.stringify(results));
       });
 
     },
