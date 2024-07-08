@@ -1,8 +1,9 @@
 const { defineConfig } = require("cypress");
 const fs = require('fs')
+const process = require('node:process');
 
 const { exec } = require('child_process');
-const pythonLogger = '/portal_ui_ci/.venv/bin/python ci/cypress_reporter.py'
+const pythonLogger = process.cwd() + '/.venv/bin/python ci/cypress_reporter.py'
 
 module.exports = defineConfig({
   chromeWebSecurity: false,
