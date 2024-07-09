@@ -8,12 +8,16 @@ import subprocess
 import threading
 import base64
 import datetime
+import os
+import signal
 
 USERS = set()
+cypress_process = None
 
 
 def run_cypress():
-    subprocess.run(["npm", "run", "cli"])
+    global cypress_process
+    cypress_process = subprocess.Popen('npm run cli', shell=True)
     return
 
 
@@ -30,12 +34,16 @@ def is_job_thread_running(job_name):
 
 
 def handle_cypress_thread():
+    global cypress_process
+
     job_name = 'run_cypress'
     thread_details = is_job_thread_running(job_name)
     th = thread_details.get('thread')
     running = threading.Event()
     running.set()
     if th is not None:
+        if cypress_process is not None:
+            os.kill(cypress_process.pid, signal.SIGINT)
         running.clear()
 
     curr = threading.Thread(target=run_cypress, daemon=True, name=job_name)
@@ -48,14 +56,17 @@ async def echo(websocket):
 
     USERS.add(websocket)
 
-    async for message in websocket:
+    try:
+        await websocket.send(json.dumps({
+            'message': f"Connection established ..."
+        }))
 
-        try:
-            await websocket.send(json.dumps({
-                'message': f"Received message. {message}"
-            }))
-
+        async for message in websocket:
             try:
+                await websocket.send(json.dumps({
+                    'message': f"Received message. {message}"
+                }))
+
                 if 'logger.' in message:
                     r = base64.b64decode(message[7:])
                     report = r.decode('utf-8')
@@ -67,8 +78,10 @@ async def echo(websocket):
             except Exception as e2:
                 websockets.broadcast(USERS, str(e2))
 
-        except Exception as e:
-            write_to_file('error.txt', f"{datetime.datetime.now()}: {str(e)}")
+    except Exception as e:
+        write_to_file('error.txt', f"{datetime.datetime.now()}: {str(e)}")
+    finally:
+        USERS.remove(websocket)
 
 
 async def main():

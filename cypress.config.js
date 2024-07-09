@@ -13,30 +13,34 @@ module.exports = defineConfig({
     experimentalInteractiveRunEvents: true,
     setupNodeEvents(on, config) {
       // implement node event listeners here
+      try {
+        on('after:spec', (spec, results) => {
 
-      on('after:spec', (spec, results) => {
+          exec(`${pythonLogger} ${btoa(JSON.stringify(results))}`, (err, stdout, stderr) => {
+            if (err) {
+              console.error(`error: ${err.message}`);
+              return;
+            }
 
-        exec(`${pythonLogger} ${btoa(JSON.stringify(results))}`, (err, stdout, stderr) => {
-          if (err) {
-            console.error(`error: ${err.message}`);
-            return;
-          }
+            if (stderr) {
+              console.error(`stderr: ${stderr}`);
+              return;
+            }
 
-          if (stderr) {
-            console.error(`stderr: ${stderr}`);
-            return;
-          }
+            console.log(`stdout:\n${stdout}`);
+          });
 
-          console.log(`stdout:\n${stdout}`);
+        })
+
+        on('after:run', (results) => {
+          exec(`${pythonLogger} ${btoa(JSON.stringify({'complete': true}))}`, (err, stdout, stderr) => {
+          });
+          fs.writeFileSync('./ci/logs/last-run-tests-results.json', JSON.stringify(results));
         });
+      } catch (e) {
+        console.error(e)
+      }
 
-      })
-
-      on('after:run', (results) => {
-        exec(`${pythonLogger} ${btoa(JSON.stringify({'complete': true}))}`, (err, stdout, stderr) => {
-        });
-        fs.writeFileSync('./ci/logs/last-run-tests-results.json', JSON.stringify(results));
-      });
 
     },
   },
