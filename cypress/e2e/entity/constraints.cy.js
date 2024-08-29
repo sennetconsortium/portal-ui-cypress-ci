@@ -18,12 +18,13 @@ describe(`${MSGS.name}.${MSGS.entity}.Constraints`, () => {
 
         it('A suspension can be the direct descendant of an organ of type blood', () => {
             const searchTable = ($tr, constraints) => {
-                cy.searchTable('SNT687.SFVJ.758')
+                cy.wait(WAIT.time)
+                cy.searchTable('SNT687.SFVJ.758', {facet: 'Sample', keyword: 'Blood'})
                 cy.wait(WAIT.time)
                 cy.checkSampleCategories(constraints)
             }
             // DEP: Requires having a sample of type Organ
-            cy.basicConstraint({name: 'Sample', category: 'Organ'}, {name: 'Sample', index: 1}, ['Suspension'], {callback: searchTable})
+            cy.basicConstraint({name: 'Sample'}, {name: 'Sample', index: 1}, ['Suspension'], {callback: searchTable})
         })
 
         // DEP: Requires having a sample of type Organ
@@ -41,19 +42,20 @@ describe(`${MSGS.name}.${MSGS.entity}.Constraints`, () => {
         })
     })
 
-    context('While creating an entity of type Dataset, the following constraints apply:', () => {
-        it('Tissue section, block and suspension can be ancestors thereof', () => {
-            const searchTable = ($tr, constraints) => {
-                cy.get(`${SELECTORS.table.tr}`).each(($el, i) => {
-                    const text = $el.find(SELECTORS.table.cell).eq(2).find('div').text()
-                    cy.log('Category', text)
-                    const pos = constraints.indexOf(text)
-                    cy.wrap(pos).should('not.eql', -1)
-                })
-            }
-            cy.basicConstraint({name: 'Sample' }, {name: 'Dataset', index: 2}, ['Section', 'Block', 'Suspension'], {callback: searchTable})
-        })
-    })
+    // TODO: enable if single registration ever comes in again
+    // context('While creating an entity of type Dataset, the following constraints apply:', () => {
+    //     it('Tissue section, block and suspension can be ancestors thereof', () => {
+    //         const searchTable = ($tr, constraints) => {
+    //             cy.get(`${SELECTORS.table.tr}`).each(($el, i) => {
+    //                 const text = $el.find(SELECTORS.table.cell).eq(2).find('div').text()
+    //                 cy.log('Category', text)
+    //                 const pos = constraints.indexOf(text)
+    //                 cy.wrap(pos).should('not.eql', -1)
+    //             })
+    //         }
+    //         cy.basicConstraint({name: 'Sample' }, {name: 'Dataset', index: 2}, ['Section', 'Block', 'Suspension'], {callback: searchTable})
+    //     })
+    // })
 
 
 })

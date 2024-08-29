@@ -20,7 +20,7 @@ describe(`${MSGS.name}.${MSGS.search}.Table Columns`, () => {
         removeColumn()
         checkToggle()
         cy.get('.clear-filter-button').click()
-        cy.get('.rdt_TableHead [data-column-id="5"]').should('not.exist')
+        cy.get('.rdt_TableHead [data-column-id="source_type"]').should('not.exist')
     })
 
 })

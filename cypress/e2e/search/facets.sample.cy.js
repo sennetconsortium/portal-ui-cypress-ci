@@ -33,7 +33,7 @@ describe(`${MSGS.name}.${MSGS.search}.Facets.Sample`, () => {
             cy.wait(WAIT.time)
             cy.get('#sui-facet--Lung').parent().as('lungFacet')
             cy.get('@lungFacet').find('#sui-facet--Lung').click()
-            cy.get('@lungFacet').find('.collapsableFacets_facetsHover__LyFlN').should('exist')
+            cy.get('@lungFacet').parent().find('.collapsableFacets_contracted__dHAbX').should('exist')
         })
 
         it('Displays Brain on click of + More under Organ (#136)', () => {
@@ -44,7 +44,7 @@ describe(`${MSGS.name}.${MSGS.search}.Facets.Sample`, () => {
             cy.get('.sui-facet-view-more').eq(0).click()
             //DEP: A data specific test, this will fail if no entries are available
             cy.wait(WAIT.time)
-            cy.get('[for="sui-facet--Organ-BR"] .sui-multi-checkbox-facet__input-text').eq(0).should('have.text', 'Brain')
+            cy.get('[for="sui-facet--Brain-BR"] .sui-multi-checkbox-facet__input-text').eq(0).should('have.text', 'Brain')
         })
     })
 

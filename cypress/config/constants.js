@@ -38,7 +38,7 @@ const SELECTORS = {
     },
     columnToggle: {
         type: '.sui-columns-toggle [aria-label="Remove Type"]',
-        column: '.rdt_TableHead [data-column-id="5"]'
+        column: '.rdt_TableHead [data-column-id="source_type"]'
     }
 }
 
@@ -78,8 +78,8 @@ const DATA = {
             sennetId: 'SNT967.JSBZ.284'
         },
         organ: {
-            uuid: '85f3db3fa32ae1486bf7de5669df8618',
-            sennetId: 'SNT482.MZHD.399'
+            uuid: '8ffbec4c455e024e943eb7af30874bdd',
+            sennetId: 'SNT672.KZLK.674'
         },
         block: {
             uuid: '3ffd8a087f0b8e2ffb4c5566dbd6c451',

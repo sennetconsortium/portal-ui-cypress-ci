@@ -13,7 +13,7 @@ describe(`${MSGS.name}.${MSGS.entity}.${MSGS.create}.Source`, () => {
         })
         it("Displays modal", () => {
             cy.entityCreateForm()
-            cy.get('#group_uuid').select('University of Pittsburgh TMC')
+            cy.get('#group_uuid').select('CODCC Testing Group')
             cy.enterToSource()
         })
     })
