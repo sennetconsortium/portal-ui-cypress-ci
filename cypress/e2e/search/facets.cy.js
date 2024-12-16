@@ -5,13 +5,15 @@ describe(`${MSGS.name}.${MSGS.search}.Facets`, () => {
         cy.visit(PATHS.search)
     })
 
-    it("Facets present 'Entity Type', 'Dataset Type', 'Data Provider Group', 'Registered By' ", () => {
-        const facets = ['Entity Type', 'Dataset Type', 'Data Provider Group', 'Registered By']
+    it("Facets present 'Entity Type', 'Has Spatial Information', 'Status', 'Data Provider Group', 'Registered By' ", () => {
+        const facets = ['Entity Type', 'Has Spatial Information', 'Status', 'Data Provider Group', 'Registered By']
         let result = [];
         cy.wait(WAIT.time)
         cy.get('.sui-facet__title').each((el, index) => {
-            const text = el.text()
+            const text = el.text().trim()
+            cy.log(text)
             if (facets.indexOf(text) !== -1) {
+                cy.log('Found: ' + text)
                 result.push(true)
             }
         })
