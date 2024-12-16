@@ -117,7 +117,8 @@ const DATA = {
         },
         visium: {
             uuid: 'e6e88238b28bcbd32faf204d5e07867b',
-            sennetId: 'SNT856.FWDH.844'
+            sennetId: 'SNT856.FWDH.844',
+            source: '268f736ef83a86bed16679235fa55d3b'
         }
     }
 }
