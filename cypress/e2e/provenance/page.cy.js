@@ -22,16 +22,16 @@ describe(`${MSGS.name}.${MSGS.provenance}.Page`, () => {
         })
 
         it('Clicking metadata button simultaneously selects node', () => {
-            cy.viewEntity('dataset', DATA.dataset.codex.uuid)
+            cy.viewEntity('dataset', DATA.dataset.visium.uuid)
             cy.wait(WAIT.time * 3)
             cy.get('#Metadata-collapse .nav-item a').eq(0).click()
             cy.get('.node.is-active').should('have.length.gte', 1)
         })
 
         it('Clicking node simultaneously selects metadata button', () => {
-            cy.viewEntity('dataset', DATA.dataset.codex.uuid)
-            cy.get('#node--325e13d30a43386d97fb3d046677b568').click()
-            cy.get('#Metadata-collapse [data-uuid="325e13d30a43386d97fb3d046677b568"].active').should('have.length.gte', 1)
+            cy.viewEntity('dataset', DATA.dataset.visium.uuid)
+            cy.get(`#node--${DATA.dataset.visium.source}`).click()
+            cy.get(`#Metadata-collapse [data-uuid="${DATA.dataset.visium.source}"].active`).should('have.length.gte', 1)
         })
 
     })

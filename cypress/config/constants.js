@@ -95,10 +95,6 @@ const DATA = {
             uuid: '73d69feef1aa022bb5f1fb0c204de4b0',
             sennetId: 'SNT382.THVR.486'
         },
-        codex: {
-            uuid: '70d65c8edf54654a44c2538659ff2f37',
-            sennetId: 'SNT396.JQRS.283'
-        },
         rnaSeq: {
             uuid: '7b59d7edad5a1bf8b60be94ed3abb48c',
             sennetId: 'SNT643.PNFP.449'
@@ -107,17 +103,10 @@ const DATA = {
             uuid: '3cba95bf0f16cb0bd86f054a7f52efea',
             sennetId: 'SNT877.CBGD.772'
         },
-        lightsheet: {
-            uuid: '70d65c8edf54654a44c2538659ff2f37',
-            sennetId: 'SNT396.JQRS.283'
-        },
-        histology: {
-            uuid: 'cf8eef9ab9ad49c4481db113893dff9c',
-            sennetId: 'SNT538.CRXN.954'
-        },
         visium: {
             uuid: 'e6e88238b28bcbd32faf204d5e07867b',
-            sennetId: 'SNT856.FWDH.844'
+            sennetId: 'SNT856.FWDH.844',
+            source: '268f736ef83a86bed16679235fa55d3b'
         }
     }
 }
