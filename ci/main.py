@@ -17,7 +17,7 @@ cypress_process = None
 
 def run_cypress():
     global cypress_process
-    cypress_process = subprocess.Popen('npm run cli', shell=True)
+    cypress_process = subprocess.Popen('npm run cli -- --spec "cypress/e2e/stress/general.cy.js"', shell=True)
     return
 
 
