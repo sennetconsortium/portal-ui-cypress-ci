@@ -13,11 +13,13 @@ import signal
 
 USERS = set()
 cypress_process = None
+cypress_ops = '-- --spec "cypress/e2e/stress/general.cy.js"'
 
 
 def run_cypress():
     global cypress_process
-    cypress_process = subprocess.Popen('npm run cli -- --spec "cypress/e2e/stress/general.cy.js"', shell=True)
+    global cypress_ops
+    cypress_process = subprocess.Popen(f'npm run cli {cypress_ops}', shell=True)
     return
 
 
@@ -53,6 +55,7 @@ def handle_cypress_thread():
 
 async def echo(websocket):
     global USERS
+    global cypress_ops
 
     USERS.add(websocket)
 
@@ -63,8 +66,24 @@ async def echo(websocket):
 
         async for message in websocket:
             try:
+                params_str = ''
+                params_str_encoded = ''
+                if 'params=' in message:
+                    params_str_encoded = message.split('params=')[1]
+                    p = base64.b64decode(params_str_encoded)
+                    params_str = p.decode('utf-8')
+                    params = json.loads(params_str)
+                    token_str = params.get('token')
+                    display_name = params.get('display_name')
+                    cypress_ops = params.get('options')
+                    with open(f"{os.getcwd()}/cypress.env.json") as f:
+                        d = json.load(f)
+                        d['token'] = token_str
+                        d['session_displayname'] = display_name
+                        write_to_file('cypress.env.json', json.dumps(d), path='', mode='w+')
+
                 await websocket.send(json.dumps({
-                    'message': f"Received message. {message}"
+                    'message': f"Received message. {message.replace(params_str_encoded, params_str)}"
                 }))
 
                 if 'logger.' in message:
