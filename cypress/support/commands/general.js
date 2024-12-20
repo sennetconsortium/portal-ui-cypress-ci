@@ -38,7 +38,20 @@ Cypress.Commands.add('login', (options = { }, name = 'pitt') => {
             cy.visit(PATHS.search)
             cy.contains('Log in').click()
         }
-        cy.loginProcess()
+
+        if (AUTH.token) {
+            const j = {
+                name: AUTH.displayname,
+                email: AUTH.displayname,
+                groups_token: AUTH.token
+            }
+            cy.setCookie('info', btoa(JSON.stringify(j)))
+            cy.setCookie('isAuthenticated', 'true')
+            cy.visit(PATHS.search)
+            cy.contains(AUTH.displayname)
+        } else {
+            cy.loginProcess()
+        }
 
         cy.contains(AUTH.displayname)
     })
