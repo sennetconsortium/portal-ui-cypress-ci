@@ -11,8 +11,8 @@ OR
 
 ## Docker 
 ```agsl
-docker build -t portal_ui_ci .
-docker run -p 8765:8765 -v $PWD:/portal_ui_ci portal_ui_ci
+docker build -t portal-ui-cypress-tests .
+docker run -p 8765:8765 -v $PWD:/portal_ui_ci portal-ui-cypress-tests
 ```
 
 ## Environment

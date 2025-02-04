@@ -10,7 +10,7 @@
 //
 //
 // -- This is a parent command --
-import {DATA, PATHS, WAIT} from '../../config/constants';
+import {URLS, PATHS, WAIT} from '../../config/constants';
 import { AUTH } from '../../config/auth';
 
 Cypress.Commands.add('clog', (msg) => {
@@ -33,28 +33,39 @@ Cypress.Commands.add('loginProcess', (msg) => {
 
 Cypress.Commands.add('login', (options = { }, name = 'pitt') => {
     cy.viewport('macbook-13')
-    cy.session(name, () => {
-        if (!options.triggered) {
-            cy.visit(PATHS.search)
-            cy.contains('Log in').click()
+    if (AUTH.token) {
+        const j = {
+            name: AUTH.displayname,
+            email: AUTH.displayname,
+            groups_token: AUTH.token
         }
-
-        if (AUTH.token) {
-            const j = {
-                name: AUTH.displayname,
-                email: AUTH.displayname,
-                groups_token: AUTH.token
-            }
-            cy.setCookie('info', btoa(JSON.stringify(j)))
-            cy.setCookie('isAuthenticated', 'true')
-            cy.visit(PATHS.search)
-            cy.contains(AUTH.displayname)
-        } else {
-            cy.loginProcess()
-        }
-
+        cy.setCookie('info', btoa(JSON.stringify(j)))
+        cy.setCookie('isAuthenticated', 'true')
+        cy.visit(PATHS.search)
         cy.contains(AUTH.displayname)
-    })
+    }
+
+    // cy.session(name, () => {
+    //     if (!options.triggered) {
+    //         cy.visit(PATHS.search)
+    //         cy.contains('Log in').click()
+    //     }
+    //
+    //     if (AUTH.token) {
+    //         const j = {
+    //             name: AUTH.displayname,
+    //             email: AUTH.displayname,
+    //             groups_token: AUTH.token
+    //         }
+    //         cy.setCookie('info', btoa(JSON.stringify(j)))
+    //         cy.setCookie('isAuthenticated', 'true')
+    //         cy.visit(PATHS.search)
+    //     } else {
+    //         cy.loginProcess()
+    //     }
+    //
+    //     cy.contains(AUTH.displayname)
+    // })
 })
 
 Cypress.Commands.add('facets', (name = 'Sample', legend = 'Sample Category', index = 2) => {

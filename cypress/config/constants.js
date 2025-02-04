@@ -104,9 +104,9 @@ const DATA = {
             sennetId: 'SNT877.CBGD.772'
         },
         visium: {
-            uuid: 'e6e88238b28bcbd32faf204d5e07867b',
-            sennetId: 'SNT856.FWDH.844',
-            source: '268f736ef83a86bed16679235fa55d3b'
+            uuid: '599a7980b52ea36af473877d5717ab5a',
+            sennetId: 'SNT527.XVMQ.535',
+            source: '4db6b80dd183311ff97548f44b727b59'
         }
     }
 }
