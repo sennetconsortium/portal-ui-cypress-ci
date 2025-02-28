@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -y \
 # Set up a new python envioronment
 RUN python3 -m venv .venv
 RUN . .venv/bin/activate
+RUN apt-get autoclean
 RUN apt install -y python3-websockets
 
 RUN npm install .
