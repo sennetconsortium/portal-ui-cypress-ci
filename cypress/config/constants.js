@@ -108,6 +108,12 @@ const DATA = {
             sennetId: 'SNT527.XVMQ.535',
             source: '4db6b80dd183311ff97548f44b727b59'
         }
+    },
+    upload: {
+        new: {
+            uuid: '6907bdfb8634680b66dc453ccd1c39a8',
+            sennetId: 'SNT478.HQRL.886'
+        }
     }
 }
 

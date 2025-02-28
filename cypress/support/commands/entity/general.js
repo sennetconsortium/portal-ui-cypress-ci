@@ -1,4 +1,5 @@
 import { WAIT, SELECTORS } from "../../../config/constants";
+import {randomIntFromInterval} from "../../../config/util";
 
 Cypress.Commands.add('entityCreateForm', (entity = 'Source', index = 0) => {
     cy.get('.me-auto.navbar-nav').as('mainMenu')
@@ -46,6 +47,16 @@ Cypress.Commands.add('enterToDataset', (action = 'Registered') => {
     }
     cy.get('#contains_human_genetic_sequences[value="false"]').check()
     cy.submitAndCheckModalTitle('Dataset', action)
+})
+
+
+Cypress.Commands.add('enterToUpload', (action = 'Registered') => {
+    cy.get('#title').clear().type(`Upload title test ${Math.floor(Math.random() * 1000)}`)
+    cy.get(SELECTORS.forms.desc).clear().type('Cypress automated description upload')
+    cy.get('#intended_dataset_type').select(randomIntFromInterval(1, 10))
+    cy.get('#intended_organ').select(randomIntFromInterval(1, 10))
+    //cy.get('#intended_source_type').select(3)
+    cy.submitAndCheckModalTitle('Upload', action)
 })
 
 Cypress.Commands.add('searchTable', (keyword, other) => {
