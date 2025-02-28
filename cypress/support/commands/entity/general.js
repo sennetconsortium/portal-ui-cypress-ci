@@ -16,15 +16,21 @@ Cypress.Commands.add('submitAndCheckModalTitle', (entity, action) => {
 
 Cypress.Commands.add('enterToSource', (action = 'Registered') => {
     cy.get('#lab_source_id').clear().type(`${Math.floor(Math.random() * 1000)}-Aorta`)
-    cy.get('#source_type').select('Human')
+    if (action === 'Registered') {
+        cy.get('#source_type').select('Human')
+    }
+
     cy.get(SELECTORS.forms.protocolUrl).clear().type('https://dx.doi.org/10.17504/protocols.io.bf4cjqsw')
     cy.get(SELECTORS.forms.desc).clear().type('Cypress automated description source')
     cy.submitAndCheckModalTitle('Source', action)
 })
 
 Cypress.Commands.add('enterToSample', (action = 'Registered') => {
-    cy.get(SELECTORS.forms.sampleCategory).select('Organ')
-    cy.get('#organ').select('Muscle')
+    if (action === 'Registered') {
+        cy.get(SELECTORS.forms.sampleCategory).select('Organ')
+        cy.get('#organ').select('Muscle')
+    }
+
     cy.get(SELECTORS.forms.protocolUrl).clear().type('https://dx.doi.org/10.17504/protocols.io.af4cjqsw')
     cy.get(SELECTORS.forms.desc).clear().type('Cypress automated description sample')
     cy.get('#lab_tissue_sample_id').clear().type(`${Math.floor(Math.random() * 1000)}-organ`)

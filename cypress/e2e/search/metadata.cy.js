@@ -6,8 +6,9 @@ describe(`${MSGS.name}.${MSGS.search}.Metadata`, () => {
     })
 
     it("Can navigate to discover/metadata page from search/entities' ", () => {
-        cy.get('#searchDropdown').click()
-        cy.get('[aria-labelledby="searchDropdown"] a').eq(0).click()
+        cy.get('.sui-layout-sidebar-dropdown').as('searchDropdown')
+        cy.get('@searchDropdown').find('#searchDropdown').click()
+        cy.get('@searchDropdown').find('[aria-labelledby="searchDropdown"] a').eq(0).click()
         cy.wait(WAIT.time)
         cy.get('.btn').eq(1).contains('Search').click()
         cy.wait(WAIT.time)
