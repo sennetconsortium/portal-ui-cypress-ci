@@ -70,6 +70,10 @@ const DATA = {
         human: {
             uuid: '34fb81da75a5386d406a7b1835d92bdd',
             sennetId: 'SNT456.NJFC.364'
+        },
+        public: {
+            uuid: '268f736ef83a86bed16679235fa55d3b',
+            sennetId: 'SNT864.XRJR.226'
         }
     },
     sample: {
