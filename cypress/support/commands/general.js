@@ -98,6 +98,13 @@ Cypress.Commands.add('assertValueCopiedToClipboard', value => {
     })
 })
 
+Cypress.Commands.add('userMenu', (index) => {
+    cy.contains(AUTH.displayname).click()
+    cy.get('.navbar-nav:not(.me-auto) .nav-item').eq(1).as('userMenu')
+    cy.get('@userMenu').find('#nav-dropdown--user')
+    cy.get('@userMenu').find('[aria-labelledby="nav-dropdown--user"] a').eq(index).should('be.visible').click()
+})
+
 
 //
 //
