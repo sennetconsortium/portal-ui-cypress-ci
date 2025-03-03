@@ -1,4 +1,4 @@
-import { WAIT, SELECTORS } from "../../../config/constants";
+import { WAIT, SELECTORS, DATA } from "../../../config/constants";
 import {randomIntFromInterval} from "../../../config/util";
 
 Cypress.Commands.add('entityCreateForm', (entity = 'Source', index = 0) => {
@@ -59,6 +59,33 @@ Cypress.Commands.add('enterToUpload', (action = 'Registered') => {
     cy.submitAndCheckModalTitle('Upload', action)
 })
 
+Cypress.Commands.add('enterToPublication', (action = 'Registered') => {
+    cy.get('#title').clear().type(`Publication title test ${Math.floor(Math.random() * 1000)}`)
+    cy.get('#publication_venue').clear().type('Cypress automated publication venue')
+    let d = randomIntFromInterval(1, 28)
+    if (d < 10 ) {
+        d = '0'+d
+    }
+    cy.get('#publication_date').clear().type('2023-06-'+d)
+    cy.get('#publication_url').clear().type('https://www.biomedcentral.com/collections/bioelecmed/#'+randomIntFromInterval(1, 100))
+    cy.submitAndCheckModalTitle('Publication', action)
+})
+
+Cypress.Commands.add('enterToCollection', (action = 'Registered', entity = 'Collection') => {
+    cy.get('#title').clear().type(`${entity} title test ${Math.floor(Math.random() * 1000)}`)
+    cy.get('#description').clear().type(`Cypress automated description ${entity}`)
+    cy.get('.btn-delete-ancestor').eq(0).click()
+    cy.wait(WAIT.time)
+    cy.get('.btn-delete-ancestor').eq(1).click()
+    cy.get('.c-metadataUpload__popover--entity_uuids-pc button').click()
+    cy.wait(WAIT.time)
+    cy.get('textarea[name="ancestor_ids"]').clear().type(DATA.dataset.rnaSeq.uuid)
+    cy.get('#entity_metadata').selectFile(`cypress/fixtures/contributors.tsv`, {force: true})
+    cy.selectAncestorInDataset(DATA.dataset.visium.sennetId)
+    cy.wait(WAIT.time)
+    cy.submitAndCheckModalTitle(entity, action)
+})
+
 Cypress.Commands.add('searchTable', (keyword, other) => {
     cy.wait(WAIT.time)
     cy.get(SELECTORS.search).clear().type(`${keyword}{enter}`)
@@ -66,14 +93,14 @@ Cypress.Commands.add('searchTable', (keyword, other) => {
     //cy.get(SELECTORS.table.tr).eq(1).click()
     if (other) {
         cy.facets(other.facet)
-        cy.get(SELECTORS.table.td).contains(other.keyword)
+        cy.get('.modal-body ' + SELECTORS.table.td).contains(other.keyword)
     }
-    cy.get(SELECTORS.table.td).contains(keyword).click()
+    cy.get('.modal-body ' + SELECTORS.table.td).contains(keyword).click()
 })
 
 Cypress.Commands.add('clickAddAncestorButton', (id) => {
     // TODO: consolidate id name of this button in code
-    cy.get('#direct_ancestor_uuid button, #direct_ancestor_uuid_button button').click()
+    cy.get('#direct_ancestor_uuid button, #direct_ancestor_uuid_button > button').click()
 })
 
 Cypress.Commands.add('selectAncestorInDataset', (id) => {

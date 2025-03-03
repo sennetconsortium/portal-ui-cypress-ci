@@ -114,6 +114,24 @@ const DATA = {
             uuid: '6907bdfb8634680b66dc453ccd1c39a8',
             sennetId: 'SNT478.HQRL.886'
         }
+    },
+    publication: {
+        new: {
+            uuid: '3175e5874cd36f2315aed3410c41c572',
+            sennetId: 'SNT299.LGRV.697'
+        }
+    },
+    collection: {
+        withDataset: {
+            uuid: '015ca7f7b45929b871d7d6863868058b',
+            sennetId: 'SNT328.QRTS.765'
+        }
+    },
+    epicollection: {
+        withDataset: {
+            uuid: '45412e45f8baef4eb607fb6f49af6245',
+            sennetId: 'SNT328.QRTS.765'
+        }
     }
 }
 
