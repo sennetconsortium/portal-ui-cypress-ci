@@ -17,7 +17,7 @@ describe(`${MSGS.name}.${MSGS.entity}.${MSGS.edit}.EpiCollection`, () => {
             cy.inputValueExists(['#title', '#description'])
         })
         it("Displays modal", () => {
-            cy.enterToCollection('Updated', 'EpiCollection')
+            cy.enterToCollection('Updated', 'Epicollection')
         })
     })
 

@@ -31,6 +31,7 @@ describe(`${MSGS.name}.${MSGS.provenance}.Page`, () => {
         it('Clicking node simultaneously selects metadata button', () => {
             cy.viewEntity('dataset', DATA.dataset.visium.uuid)
             cy.get(`#node--${DATA.dataset.visium.source}`).click()
+            cy.wait(WAIT.time)
             cy.get(`#Metadata-collapse [data-uuid="${DATA.dataset.visium.source}"].active`).should('have.length.gte', 1)
         })
 
