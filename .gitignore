@@ -5,6 +5,7 @@ node_modules
 cypress/config/local.js
 cypress/videos
 cypress/screenshots/
+cypress/downloads
 dump.js
 cypress.env.json
 package-lock.json

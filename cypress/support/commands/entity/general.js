@@ -55,6 +55,8 @@ Cypress.Commands.add('enterToUpload', (action = 'Registered') => {
     cy.get(SELECTORS.forms.desc).clear().type('Cypress automated description upload')
     cy.get('#intended_dataset_type').select(randomIntFromInterval(1, 10))
     cy.get('#intended_organ').select(randomIntFromInterval(1, 10))
+    cy.get('#anticipated_complete_upload_month').clear().type(`202${(new Date().getFullYear()) + randomIntFromInterval(1, 3)}-${randomIntFromInterval(1, 12)}`)
+    cy.get('#anticipated_dataset_count').clear().type(randomIntFromInterval(2, 150))
     //cy.get('#intended_source_type').select(3)
     cy.submitAndCheckModalTitle('Upload', action)
 })
