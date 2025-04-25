@@ -8,7 +8,7 @@ describe(`${MSGS.name}.${MSGS.search}.Organs`, () => {
 
     it("Can navigate to /organs page from search/entities' ", () => {
 
-        cy.get('.navbar-nav:not(.me-auto) .nav-item').eq(0).as('toolsMenu')
+        cy.get('.navbar-nav.me-auto .nav-item').eq(0).as('toolsMenu')
         cy.get('@toolsMenu').find('#nav-dropdown--atlas').as('toolsSMenu').click()
         cy.wait(WAIT.time)
         cy.get('@toolsSMenu').parent().find('[aria-labelledby="nav-dropdown--atlas"] a').eq(2).click()

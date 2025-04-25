@@ -2,7 +2,7 @@ import { WAIT, SELECTORS, DATA } from "../../../config/constants";
 import {randomIntFromInterval} from "../../../config/util";
 
 Cypress.Commands.add('entityCreateForm', (entity = 'Source', index = 0) => {
-    cy.get('.me-auto.navbar-nav').as('mainMenu')
+    cy.get('.navbar-collapse .navbar-nav').eq(1).as('mainMenu')
     cy.get('@mainMenu').find('#nav-dropdown').click()
     cy.get('@mainMenu').find('#submenu-md-Single a').eq(index).click()
     cy.url().should('contain', `/edit/${entity.toLowerCase()}?uuid=register`)
@@ -55,7 +55,7 @@ Cypress.Commands.add('enterToUpload', (action = 'Registered') => {
     cy.get(SELECTORS.forms.desc).clear().type('Cypress automated description upload')
     cy.get('#intended_dataset_type').select(randomIntFromInterval(1, 10))
     cy.get('#intended_organ').select(randomIntFromInterval(1, 10))
-    cy.get('#anticipated_complete_upload_month').clear().type(`202${(new Date().getFullYear()) + randomIntFromInterval(1, 3)}-${randomIntFromInterval(1, 12)}`)
+    cy.get('#anticipated_complete_upload_month').clear().type(`${(new Date().getFullYear()) + randomIntFromInterval(1, 3)}-${randomIntFromInterval(1, 12)}`)
     cy.get('#anticipated_dataset_count').clear().type(randomIntFromInterval(2, 150))
     //cy.get('#intended_source_type').select(3)
     cy.submitAndCheckModalTitle('Upload', action)
