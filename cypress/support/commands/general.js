@@ -43,7 +43,7 @@ Cypress.Commands.add('login', (options = { }, name = 'pitt') => {
         }
         cy.setCookie('info', btoa(JSON.stringify(j)))
         cy.setCookie('isAuthenticated', 'true')
-        cy.visit(PATHS.search)
+        cy.visit(PATHS.home)
         cy.contains(AUTH.displayname)
     }
 })

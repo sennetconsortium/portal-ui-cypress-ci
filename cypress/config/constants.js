@@ -48,6 +48,7 @@ const URLS = {
 }
 
 const PATHS = {
+    home: URLS.domain,
     search: `${URLS.domain}search`,
     searchFiles: `${URLS.domain}search/files`,
     edit: `${URLS.domain}edit`,
