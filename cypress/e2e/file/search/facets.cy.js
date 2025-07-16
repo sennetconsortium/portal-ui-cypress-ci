@@ -6,8 +6,8 @@ describe(`${MSGS.name}.File.${MSGS.search}.Facets`, () => {
         cy.visit(PATHS.searchFiles)
     })
 
-    it("Facets present 'File Type', 'Organs', 'Dataset Type', 'Modification Date' ", () => {
-        const facets = ['File Type', 'Organs', 'Dataset Type', 'Modification Date']
+    it("Facets present 'File Type', 'Organ', 'Dataset Type', 'Source' ", () => {
+        const facets = ['File Type', 'Organ', 'Dataset Type', 'Source']
         let result = [];
         cy.wait(WAIT.time)
         cy.get('.sui-facet__title').each((el, index) => {
@@ -19,10 +19,10 @@ describe(`${MSGS.name}.File.${MSGS.search}.Facets`, () => {
         cy.wrap(result).its('length').should('eq', facets.length)
     })
 
-    it("Headers include: 'Dataset SenNet ID', 'Files', 'Sample Type', 'Data Types', 'Size'", () => {
+    it("Headers include: 'Dataset SenNet ID', 'Files', 'Source', 'Organ', 'Dataset Type', 'File Types'", () => {
 
         //DEP: Requires headings to be in following order on the page
-        const headers = ['Dataset SenNet ID', 'Files', 'Sample Type', 'Data Types', 'Size']
+        const headers = ['Dataset SenNet ID', 'Files', 'Source', 'Organ', 'Dataset Type', 'File Types']
         for (let i = 0; i < headers.length; i++) {
             cy.get(SELECTORS.table.th).eq(i).should('have.text', headers[i])
         }
