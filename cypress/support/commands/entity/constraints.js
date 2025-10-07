@@ -4,7 +4,7 @@ Cypress.Commands.add('basicConstraint', (ancestor = {name: 'Source', index: 1}, 
     cy.entityCreateForm(descendant.name, descendant.index)
     cy.clickAddAncestorButton()
     cy.facets(ancestor.name, null)
-    cy.wait(WAIT.time)
+    cy.wait(WAIT.time * 2)
     let $tr = ancestor.index !== undefined ? cy.get(SELECTORS.table.tr).eq(ancestor.index) : null
     if (ancestor.category) {
         $tr = cy.get(SELECTORS.table.td).contains(ancestor.category)
@@ -36,6 +36,6 @@ Cypress.Commands.add('checkSampleCategories', (constraints) => {
 
 Cypress.Commands.add('sampleConstraint', (ancestor = {name: 'Source', index: 1}, descendant = {name: 'Sample', index: 1}, constraints = [{name: 'Organ', val: 'Organ'}], action) => {
     cy.basicConstraint(ancestor, descendant, constraints, action)
-    cy.wait(WAIT.time)
+    cy.wait(WAIT.time * 2)
     cy.checkSampleCategories(constraints)
 })

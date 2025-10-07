@@ -9,13 +9,13 @@ describe(`${MSGS.name}.Table Bulk Export`, () => {
 
     it('Able to check all and select menu', () => {
         cy.get(SELECTORS.table.checkAll).click()
-        cy.get(SELECTORS.table.checkAll)
-            .invoke('attr', 'data-total')
+        cy.get('.sui-selected-count')
+            .invoke('attr', 'data-count')
             .then((total) => {
                 cy.get(SELECTORS.table.bodyCheckbox).should('have.length', total)
             })
-        cy.get('#sui-tbl-checkbox-actions').click()
-        cy.get('#sui-tbl-checkbox-actions .dropdown-item').should('have.length', 2)
+        cy.get('.c-searchActions button').click()
+        cy.get('#sui-tbl-checkbox-actions [role="menuitem"]').should('have.length', 4)
     })
 
 

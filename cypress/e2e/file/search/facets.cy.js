@@ -6,8 +6,8 @@ describe(`${MSGS.name}.File.${MSGS.search}.Facets`, () => {
         cy.visit(PATHS.searchFiles)
     })
 
-    it("Facets present 'File Type', 'Organ', 'Dataset Type', 'Source' ", () => {
-        const facets = ['File Type', 'Organ', 'Dataset Type', 'Source']
+    it("Facets present 'Source Type', 'Organ', 'Dataset Type', 'Analyte Class' ", () => {
+        const facets = ['Source Type', 'Organ', 'Dataset Type', 'Analyte Class']
         let result = [];
         cy.wait(WAIT.time)
         cy.get('.sui-facet__title').each((el, index) => {

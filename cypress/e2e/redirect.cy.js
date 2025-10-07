@@ -13,6 +13,6 @@ describe(`${MSGS.name}.Redirect`, () => {
         cy.log('Redirect ...')
         cy.visit(`${URLS.domain}?globus=true`,  { failOnStatusCode: false })
         cy.contains(DATA.sample.block.sennetId)
-        cy.contains('Register location')
+        cy.contains('Register Location')
     })
 })

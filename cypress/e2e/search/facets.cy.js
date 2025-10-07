@@ -5,8 +5,8 @@ describe(`${MSGS.name}.${MSGS.search}.Facets`, () => {
         cy.visit(PATHS.search)
     })
 
-    it("Facets present 'Entity Type', 'Dataset Type',  'Has Spatial Information', 'Data Provider Group', 'Registered By' ", () => {
-        const facets = ['Entity Type', 'Dataset Type', 'Has Spatial Information', 'Data Provider Group', 'Registered By']
+    it("Facets present 'Entity Type', 'Dataset Type', 'Has Spatial Information', 'Affiliation' ", () => {
+        const facets = ['Entity Type', 'Dataset Type', 'Has Spatial Information', 'Affiliation']
         let result = [];
         cy.wait(WAIT.time)
         cy.get('.sui-facet__title').each((el, index) => {

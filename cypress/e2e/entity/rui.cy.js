@@ -8,12 +8,12 @@ describe(`${MSGS.name}.${MSGS.entity}.RUI`, () => {
 
     it('Able to select RUI tool', () => {
         cy.visit(`${PATHS.edit}/sample?uuid=${DATA.sample.block.uuid}`)
-        cy.contains('Register location')
+        cy.contains('Register Location')
     })
 
     it('Unable to select RUI tool', () => {
         cy.visit(`${PATHS.edit}/sample?uuid=${DATA.sample.organ.uuid}`)
-        cy.contains('Register location').should('not.exist')
+        cy.contains('Register Location').should('not.exist')
     })
 
 })

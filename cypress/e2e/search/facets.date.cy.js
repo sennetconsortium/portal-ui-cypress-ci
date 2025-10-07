@@ -6,6 +6,7 @@ describe(`${MSGS.name}.${MSGS.search}.Facets.Date`, () => {
     })
 
     const checkDate = ({name = 'CreationDate', subName = 'startdate', date = '2023-06-20'}) => {
+        cy.get('.sui-facet__title--Affiliation').click()
         cy.get(`.sui-facet__title--${name}`).click()
         cy.wait(WAIT.time)
         let text
