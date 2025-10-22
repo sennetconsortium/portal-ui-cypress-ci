@@ -23,6 +23,12 @@ describe(`${MSGS.name}.${MSGS.entity}.${MSGS.edit}.Dataset`, () => {
             cy.get('.MuiSvgIcon-colorSuccess').should('have.length', 1)
         })
 
+        it('Can process', () => {
+            cy.get('.btn').contains('Process').click()
+            cy.get('.modal--ctaConfirm .js-btn--process').contains('Process').click()
+            cy.get('.MuiSvgIcon-colorSuccess').should('have.length', 1)
+        })
+
 
     })
 
