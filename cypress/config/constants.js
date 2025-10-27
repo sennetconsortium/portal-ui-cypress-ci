@@ -117,8 +117,8 @@ const DATA = {
     },
     upload: {
         new: {
-            uuid: '6907bdfb8634680b66dc453ccd1c39a8',
-            sennetId: 'SNT478.HQRL.886'
+            uuid: '9df4bf440e0b3abecc29d86dfec298be',
+            sennetId: 'SNT967.KSGW.776'
         }
     },
     publication: {
