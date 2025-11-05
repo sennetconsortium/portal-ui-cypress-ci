@@ -8,6 +8,6 @@ describe(`${MSGS.name}.${MSGS.entity}.Vitesse`, () => {
     it('Vitesse loads', () => {
         cy.viewEntity('dataset', DATA.dataset.visium.uuid)
         cy.wait(2000)
-        cy.contains('Powered byVitessce V3.5.7')
+        cy.contains('Powered byVitessce V3.8.5')
     })
 })

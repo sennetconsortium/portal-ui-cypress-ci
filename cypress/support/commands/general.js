@@ -50,11 +50,15 @@ Cypress.Commands.add('login', (options = { }, name = 'pitt') => {
 
 Cypress.Commands.add('facets', (name = 'Sample', legend = 'Sample Category', index = 2) => {
     cy.wait(WAIT.time)
-    cy.get('.sui-facet__title--EntityType').click() // Entity Type should be opened by default, but uncomment to open
-    cy.get(`#sui-facet--EntityType-${name}`).parent().click()
-    if (legend && legend.length) {
-        cy.get(`.sui-facet__title--${legend.replaceAll(' ', '')}`).should('have.text', legend)
-    }
+    cy.get('.sui-facet__title--EntityType').then(($facet) => {
+        if ($facet.parent().find('[class*="collapsableFacets_contracted"]').length) {
+        cy.get('.sui-facet__title--EntityType').click() // Entity Type should be opened by default, but uncomment to open
+        }
+        cy.get(`#sui-facet--EntityType-${name}`).parent().click()
+        if (legend && legend.length) {
+            cy.get(`.sui-facet__title--${legend.replaceAll(' ', '')}`).should('have.text', legend)
+        }
+    })
 })
 
 Cypress.Commands.add('copyVal', (delimiter = 'SenNet ID:', key = 'cypress.sennet_id', sel = '.modal-body div') => {
