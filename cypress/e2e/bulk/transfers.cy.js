@@ -26,8 +26,15 @@ describe(`${MSGS.name}.Transfers`, () => {
             canGoToTransfers()
         })
 
-      
-
+        it('Cannot proceed if no rows', () => {
+            cy.visit(PATHS.searchFiles)
+            canGoToTransfers()
+            cy.get('.btn-delete-file-transfer-row').click()
+            cy.get('.btn.btn-outline-primary').should('be.disabled')
+            cy.get('button[aria-label="Add"]').click()
+            canGoToTransfers()
+            cy.get('.btn.btn-outline-primary').should('not.be.disabled')
+        })
     })
 
 })
