@@ -35,6 +35,24 @@ describe(`${MSGS.name}.Transfers`, () => {
             canGoToTransfers()
             cy.get('.btn.btn-outline-primary').should('not.be.disabled')
         })
+
+        it('Cannot proceed without selection', () => {
+            cy.visit(PATHS.searchFiles)
+            canGoToTransfers()
+            // Next
+            cy.get('.btn.btn-outline-primary').click()
+            // Next
+            cy.get('.btn.btn-outline-primary').click()
+            cy.get('.form-inputInvalid').should('have.length', 1)
+            cy.wait(WAIT.time * 2)
+            cy.get('.destinationCollectionSelect__indicators').click()
+            cy.get('.destinationCollectionSelect__option').eq(1).click()
+            cy.get('#destination_file_path').clear().type(`/test`)
+            cy.get('.btn.btn-outline-primary').click()
+            cy.get('.form-inputInvalid').should('have.length', 0)
+        })
+
+       
     })
 
 })
