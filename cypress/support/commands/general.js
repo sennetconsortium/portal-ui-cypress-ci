@@ -39,7 +39,8 @@ Cypress.Commands.add('login', (options = { }, name = 'pitt') => {
         const j = {
             name: AUTH.displayname,
             email: AUTH.displayname,
-            groups_token: AUTH.token
+            groups_token: AUTH.token,
+            transfer_token: AUTH.transferToken
         }
         cy.setCookie('info', btoa(JSON.stringify(j)))
         cy.setCookie('isAuthenticated', 'true')
