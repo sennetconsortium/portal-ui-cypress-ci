@@ -15,7 +15,14 @@ describe(`${MSGS.name}.Table Bulk Export`, () => {
                 cy.get(SELECTORS.table.bodyCheckbox).should('have.length', total)
             })
         cy.get('.c-searchActions button').click()
-        cy.get('#sui-tbl-checkbox-actions [role="menuitem"]').should('have.length', 4)
+        cy.get('#sui-tbl-checkbox-actions [role="menuitem"]').should('have.length', 5)
+    })
+
+    it('Able to check one and export', () => {
+        cy.get(SELECTORS.table.bodyCheckbox).eq(0).click()
+        cy.get('.c-searchActions button').click()
+        cy.get('#sui-tbl-checkbox-actions [role="menuitem"]').eq(1).click()
+        cy.get('#export-selected--subMenu [role="menuitem').eq(0).click()
     })
 
 
