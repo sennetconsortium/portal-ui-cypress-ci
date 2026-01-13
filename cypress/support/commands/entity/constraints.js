@@ -11,6 +11,7 @@ Cypress.Commands.add('basicConstraint', (ancestor = {name: 'Source', index: 1}, 
     }
     if (ancestor.keyword) {
         cy.searchTable(ancestor.keyword)
+        cy.wait(WAIT.time * 2)
     }
     if ( action.click && $tr != null ){
         $tr.click()

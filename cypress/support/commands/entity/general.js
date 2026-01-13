@@ -91,7 +91,9 @@ Cypress.Commands.add('enterToCollection', (action = 'Registered', entity = 'Coll
 
 Cypress.Commands.add('searchTable', (keyword, other) => {
     cy.wait(WAIT.time)
+    cy.intercept('/entities/search').as('apiSearch')
     cy.get(SELECTORS.search).clear().type(`${keyword}{enter}`)
+    cy.wait('@apiSearch')
     cy.wait(WAIT.time)
     //cy.get(SELECTORS.table.tr).eq(1).click()
     if (other) {
