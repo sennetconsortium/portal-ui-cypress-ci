@@ -3,6 +3,10 @@ import {DATA, SELECTORS, WAIT} from "../../../config/constants";
 Cypress.Commands.add('basicConstraint', (ancestor = {name: 'Source', index: 1}, descendant = {name: 'Sample', index: 1}, constraints = [], action= {click: true}) => {
     cy.entityCreateForm(descendant.name, descendant.index)
     cy.clickAddAncestorButton()
+    cy.wait(WAIT.time)
+    // close and open again to bypass cypress issue when loading modal content
+    cy.get('.modal-footer button').click()
+    cy.clickAddAncestorButton() 
     cy.facets(ancestor.name, null)
     cy.wait(WAIT.time * 2)
     let $tr = ancestor.index !== undefined ? cy.get(SELECTORS.table.tr).eq(ancestor.index) : null
