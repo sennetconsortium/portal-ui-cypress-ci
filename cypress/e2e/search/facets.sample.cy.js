@@ -33,7 +33,7 @@ describe(`${MSGS.name}.${MSGS.search}.Facets.Sample`, () => {
             cy.wait(WAIT.time)
             cy.get('#sui-facet--Lung').parent().as('lungFacet')
             cy.get('@lungFacet').find('#sui-facet--Lung').click()
-            cy.get('@lungFacet').parent().find('.collapsableFacets_contracted__dHAbX').should('exist')
+            cy.get('@lungFacet').parent().parent().find('.bi-chevron-right').should('exist')
         })
 
         // it('Displays Brain on click of + More under Organ (#136)', () => {
