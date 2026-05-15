@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "npx cypress open",
-    "cli": "cypress run"
+    "cli": "cypress run",
+    "gui": "npm start"
   },
   "keywords": [],
   "author": "",
