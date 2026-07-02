@@ -31,8 +31,8 @@ describe(`${MSGS.name}.${MSGS.search}.Facets.Sample`, () => {
             cy.wait(WAIT.time)
             cy.get('.sui-facet__title--Organ').click()
             cy.wait(WAIT.time)
-            cy.get('#sui-facet--Lung').parent().as('lungFacet')
-            cy.get('@lungFacet').find('#sui-facet--Lung').click()
+            cy.get('#sui-facet--Lung--depth0').parent().as('lungFacet')
+            cy.get('@lungFacet').find('#sui-facet--Lung--depth0').click()
             cy.get('@lungFacet').parent().parent().find('.bi-chevron-right').should('exist')
         })
 

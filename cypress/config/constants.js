@@ -98,8 +98,8 @@ const DATA = {
     },
     dataset: {
         public: {
-            uuid: '73d69feef1aa022bb5f1fb0c204de4b0',
-            sennetId: 'SNT382.THVR.486'
+            uuid: 'd37e5cf345af440cc3fdd0bc6c031ebc',
+            sennetId: 'SNT342.MDPG.595'
         },
         rnaSeq: {
             uuid: '7b59d7edad5a1bf8b60be94ed3abb48c',
