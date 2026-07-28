@@ -15,7 +15,7 @@ const TABLE_TD = '.rdt_TableCell'
 const SELECTORS = {
     search: '.input-group #search',
     table: {
-        checkAll: '[name="select-all-rows"]',
+        checkAll: '[name="Select all rows"]',
         bodyCheckbox: `.rdt_TableBody input[type="checkbox"]`,
         main: SEARCH_TABLE,
         cell: TABLE_TD,

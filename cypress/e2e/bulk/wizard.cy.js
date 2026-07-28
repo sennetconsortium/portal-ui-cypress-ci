@@ -10,6 +10,7 @@ describe(`${MSGS.name}.BulkWizard`, () => {
         it('Able to bulk register source', () => {
             cy.bulkDoStepOne(0, 'example_source_1_line.tsv')
             cy.wait(WAIT.time * 3)
+            cy.get('.MuiAlert-message').should('have.length', 1)
             cy.get('.MuiAlert-message').contains('Validation successful please continue onto the next step')
             cy.get(SELECTORS.btns.default).contains('Register').click()
             cy.wait(WAIT.time * 5)

@@ -15,7 +15,7 @@ const BASE_UBKG = {
         {
             code: 'C050020',
             name: 'source_types',
-            data: '[{"code":"C050007","sab":"SENNET","term":"Mouse"},{"code":"C050006","sab":"SENNET","term":"Human"},{"code":"C050009","sab":"SENNET","term":"Human Organoid"},{"code":"C050010","sab":"SENNET","term":"Mouse Organoid"}]'
+            data: '[{"code":"C050007","sab":"SENNET","term":"Mouse"},{"code":"C050006","sab":"SENNET","term":"Human"}]'
         },
     ]
 }

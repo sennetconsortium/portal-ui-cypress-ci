@@ -6,13 +6,14 @@ describe(`${MSGS.name}.File.${MSGS.search}.Facets`, () => {
         cy.visit(PATHS.searchFiles)
     })
 
-    it("Facets present 'Source Type', 'Organ', 'Dataset Type', 'Analyte Class' ", () => {
-        const facets = ['Source Type', 'Organ', 'Dataset Type', 'Analyte Class']
+    it("Facets present 'Source Type', 'Organ', 'Dataset Status', 'Dataset Type', 'Data Class' ", () => {
+        const facets = ['Source Type', 'Organ', 'Dataset Status', 'Dataset Type', 'Data Class']
         let result = [];
         cy.wait(WAIT.time)
         cy.get('.sui-facet__title').each((el, index) => {
             const text = el.text()
-            if (facets.indexOf(text) !== -1) {
+            cy.log(text)
+            if (facets.indexOf(text.trim()) !== -1) {
                 result.push(true)
             }
         })
