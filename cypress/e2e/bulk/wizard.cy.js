@@ -10,14 +10,14 @@ describe(`${MSGS.name}.BulkWizard`, () => {
         it('Able to bulk register source', () => {
             cy.bulkDoStepOne(0, 'example_source_1_line.tsv')
             cy.wait(WAIT.time * 3)
-            cy.get('.MuiAlert-message').should('have.length', 1)
-            cy.get('.MuiAlert-message').contains('Validation successful please continue onto the next step')
+            cy.get('.main-wrapper .MuiAlert-message').should('have.length', 1)
+            cy.get('.main-wrapper .MuiAlert-message').contains('Validation successful. Please continue to the next step.')
             cy.get(SELECTORS.btns.default).contains('Register').click()
             cy.wait(WAIT.time * 5)
             cy.get(SELECTORS.modal.title).contains('Sources registered')
             cy.get('.modal-footer .btn').eq(0).contains('Close').click()
             cy.wait(WAIT.time * 2)
-            cy.get('.MuiAlert-message > div div').eq(1).contains('You may remain on this page until the job has a Complete status.')
+            cy.get('.main-wrapper .MuiAlert-message > div div').eq(1).contains('You may remain on this page until the job has a Complete status.')
             cy.get(SELECTORS.btns.default).contains('Finish').click()
         })
 
@@ -25,8 +25,8 @@ describe(`${MSGS.name}.BulkWizard`, () => {
             cy.bulkDoStepOne(1, 'example_source_bad.tsv', 'Metadata')
             //cy.get('.MuiStepLabel-labelContainer .MuiStepLabel-label').should('have.class', 'Mui-error')
             cy.wait(WAIT.time * 5)
-            cy.get('.MuiAlert-message .badge-danger').contains('Error')
-            cy.get('.MuiAlert-message a').contains('Job Dashboard').click()
+            cy.get('.main-wrapper .MuiAlert-message .badge-danger').contains('Error')
+            cy.get('.main-wrapper .MuiAlert-message a').contains('Job Dashboard').click()
 
         })
 
