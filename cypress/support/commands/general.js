@@ -43,8 +43,10 @@ Cypress.Commands.add('login', (options = { }, name = 'pitt') => {
             transfer_token: AUTH.transferToken
         }
         cy.setCookie('info', btoa(JSON.stringify(j)))
-        cy.setCookie('isAuthenticated', 'true')
+        cy.setCookie('isAuthenticated', 'true', {domain: URLS.domain.replace('https://', '').replace('/', '')})
         cy.visit(PATHS.home)
+        //cy.reload()
+        cy.wait(2000)
         cy.contains(AUTH.displayname)
     }
 })
