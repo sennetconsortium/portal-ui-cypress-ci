@@ -4,9 +4,22 @@ const process = require('node:process');
 
 const { exec } = require('child_process');
 const pythonLogger = process.cwd() + '/.venv/bin/python ci/cypress_reporter.py'
+require('dotenv').config();
+
 
 module.exports = defineConfig({
   chromeWebSecurity: false,
+  env: {
+    token: process.env.GLOBUS_TOKEN,
+    transfer_token: process.env.TRANSFER_TOKEN
+  },
+  expose: {
+    wait_time: 1000,
+    domain: process.env.DOMAIN || 'https://data.dev.sennetconsortium.org/',
+    ubkg_server: process.env.UBKG_SERVER || 'https://ontology-api.dev.hubmapconsortium.org/',
+    username: process.env.GLOBUS_USERNAME,
+    session_displayname: process.env.GLOBUS_SESSION_DISPLAYNAME
+  },
   e2e: {
     excludeSpecPattern: "**/entity/create/*.cy.js",
     experimentalSessionAndOrigin: true,
@@ -41,7 +54,7 @@ module.exports = defineConfig({
       //   console.error(e)
       // }
 
-
+      return config;
     },
   },
 });

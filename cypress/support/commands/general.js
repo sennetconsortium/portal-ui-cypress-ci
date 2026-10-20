@@ -35,20 +35,21 @@ Cypress.Commands.add('loginProcess', (msg) => {
 
 Cypress.Commands.add('login', (options = { }, name = 'pitt') => {
     cy.viewport('macbook-13')
-    if (AUTH.token) {
+    cy.env(['token', 'transfer_token']).then(({ token, transfer_token }) => {
+        cy.log(`Logging in as ${AUTH.displayname} with token: ${token}`)
         const j = {
             name: AUTH.displayname,
             email: AUTH.displayname,
-            groups_token: AUTH.token,
-            transfer_token: AUTH.transferToken
+            groups_token: token,
+            transfer_token: transfer_token
         }
         cy.setCookie('info', btoa(JSON.stringify(j)))
         cy.setCookie('isAuthenticated', 'true', {domain: URLS.domain.replace('https://', '').replace('/', '')})
         cy.visit(PATHS.home)
-        //cy.reload()
         cy.wait(2000)
         cy.contains(AUTH.displayname)
-    }
+    });
+   
 })
 
 Cypress.Commands.add('facets', (name = 'Sample', legend = 'Sample Category', index = 2) => {

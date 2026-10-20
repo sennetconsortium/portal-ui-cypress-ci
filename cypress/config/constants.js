@@ -43,8 +43,8 @@ const SELECTORS = {
 }
 
 const URLS = {
-    domain: Cypress.env('domain') || 'https://data.dev.sennetconsortium.org/',
-    ubkg: Cypress.env('ubkg_server') || 'https://ontology-api.dev.hubmapconsortium.org/'  //https://ontology.api.hubmapconsortium.org/
+    domain: Cypress.expose('domain') || 'https://data.dev.sennetconsortium.org/',
+    ubkg: Cypress.expose('ubkg_server') || 'https://ontology-api.dev.hubmapconsortium.org/'  //https://ontology.api.hubmapconsortium.org/
 }
 
 const PATHS = {
@@ -139,10 +139,17 @@ const DATA = {
             sennetId: 'SNT328.QRTS.765'
         }
     }
+    , browser: {
+  headers: {
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+    'accept-language': 'en-US,en;q=0.9'
+  }
+}
 }
 
 const WAIT = {
-    time: Cypress.env('wait_time') || 1000
+    time: Cypress.expose('wait_time') || 1000
 }
 
 export { URLS, PATHS, MSGS, DATA, WAIT, SELECTORS }

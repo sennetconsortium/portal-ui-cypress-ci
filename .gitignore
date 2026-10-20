@@ -14,3 +14,4 @@ ci/logs/*
 ci/.venv
 .venv
 ci/__pycache__
+.env
