@@ -5,6 +5,16 @@ describe(`${MSGS.name}.Table Bulk Export`, () => {
     beforeEach(() => {
         cy.login()
         cy.visit(PATHS.search)
+        // Grant clipboard read and write permissions to the browser
+        cy.wrap(
+            Cypress.automation('remote:debugger:protocol', {
+            command: 'Browser.grantPermissions',
+            params: {
+                permissions: ['clipboardReadWrite', 'clipboardSanitizedWrite'],
+                origin: window.location.origin, // Dynamically targets your test URL context
+            },
+            })
+        );
     })
 
     it('Able to check all and select menu', () => {
@@ -29,7 +39,7 @@ describe(`${MSGS.name}.Table Bulk Export`, () => {
     it('Able to copy id to clipboard', () => {
         cy.get(SELECTORS.search).clear()
         cy.get(SELECTORS.search).type(`${DATA.dataset.public.sennetId}{enter}`)
-        cy.wait(WAIT.time)
+        cy.wait(WAIT.time * 2)
         cy.get('.popover-clipboard-pc sup').eq(0).click()
         cy.assertValueCopiedToClipboard(DATA.dataset.public.sennetId)
     })
